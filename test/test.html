@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Book Flip Viewer</title>
+    <!-- Include jQuery (Required for Turn.js) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Include Turn.js for the book animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <!-- Include PDF.js for rendering the PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        body {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        /* Container for the book */
+        #flipbook {
+            width: 800px;
+            height: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        /* Style for each page */
+        .page {
+            width: 400px;
+            height: 500px;
+            background-color: white;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        #loading {
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading">Loading PDF Pages...</div>
+    <div id="flipbook" style="display:none;"></div>
+
+    <script>
+        // Point this to your actual PDF file URL
+        const pdfUrl = '../assets/test.pdf';
+        
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+        async function renderPDF() {
+            try {
+                // 1. Load the PDF document
+                const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+                const flipbook = document.getElementById('flipbook');
+
+                // 2. Loop through every page in the PDF
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    
+                    // Create wrapper div for the page
+                    const pageDiv = document.createElement('div');
+                    pageDiv.className = 'page';
+                    
+                    // Create canvas to draw the PDF page content
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    pageDiv.appendChild(canvas);
+                    flipbook.appendChild(pageDiv);
+
+                    // Set high resolution scale for crisp rendering
+                    const viewport = page.getViewport({ scale: 2.0 });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    // Render PDF page into canvas
+                    await page.render({ canvasContext: context, viewport: viewport }).promise;
+                }
+
+                // 3. Hide loading text and show flipbook
+                document.getElementById('loading').style.display = 'none';
+                $('#flipbook').show();
+
+                // 4. Initialize the book animation turn.js plugin
+                $('#flipbook').turn({
+                    width: 800,
+                    height: 500,
+                    autoCenter: true,
+                    duration: 1000 // Speed of the page flip animation in ms
+                });
+
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                document.getElementById('loading').innerText = 'Failed to load PDF.';
+            }
+        }
+
+        // Run the script
+        renderPDF();
+    </script>
+</body>
+</html>

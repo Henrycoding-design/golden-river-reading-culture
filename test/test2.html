@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Flip Book</title>
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- StPageFlip -->
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#2f2f2f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+    font-family:sans-serif;
+}
+
+#loading{
+    color:white;
+    position:absolute;
+    font-size:22px;
+}
+
+#book{
+    width:900px;
+    height:650px;
+    display:none;
+}
+
+.page{
+    background:white;
+    overflow:hidden;
+}
+
+canvas{
+    display:block;
+    width:100%;
+    height:100%;
+}
+</style>
+
+</head>
+<body>
+
+<div id="loading">Loading PDF...</div>
+
+<div id="book"></div>
+
+<script>
+
+const pdfUrl = "../assets/test.pdf";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+async function loadBook(){
+
+    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+
+    const container = document.getElementById("book");
+
+    // Render every page
+    for(let i=1;i<=pdf.numPages;i++){
+
+        const page = await pdf.getPage(i);
+
+        const wrapper=document.createElement("div");
+        wrapper.className="page";
+
+        const canvas=document.createElement("canvas");
+        wrapper.appendChild(canvas);
+
+        container.appendChild(wrapper);
+
+        const viewport=page.getViewport({scale:1.5});
+
+        canvas.width=viewport.width;
+        canvas.height=viewport.height;
+
+        await page.render({
+            canvasContext:canvas.getContext("2d"),
+            viewport
+        }).promise;
+    }
+
+    document.getElementById("loading").style.display="none";
+    container.style.display="block";
+
+    const pageFlip=new St.PageFlip(container,{
+        width:450,
+        height:650,
+
+        size:"stretch",
+
+        minWidth:315,
+        maxWidth:1000,
+
+        minHeight:420,
+        maxHeight:1350,
+
+        maxShadowOpacity:0.5,
+
+        showCover:true,
+
+        mobileScrollSupport:true,
+
+        useMouseEvents:true,
+
+        flippingTime:700,
+
+        startPage:0,
+
+        drawShadow:true,
+
+        autoSize:true
+    });
+
+    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+
+    // Keyboard navigation
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.key==="ArrowRight"){
+            pageFlip.flipNext();
+        }
+
+        if(e.key==="ArrowLeft"){
+            pageFlip.flipPrev();
+        }
+
+    });
+
+}
+
+loadBook();
+
+</script>
+
+</body>
+</html>
