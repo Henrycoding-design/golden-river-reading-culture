@@ -50,7 +50,11 @@
 }
 
 .navbar-brand .logo-icon {
+  display: flex;
+  -ms-flex-align: center;
   font-size: 1.5rem;
+  /* height: 100px; */
+  width: 50px;
 }
 
 /* Navigation Links */
