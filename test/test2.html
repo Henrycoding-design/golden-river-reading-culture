@@ -83,7 +83,7 @@ async function loadBook(){
 
     // Get the viewport size
     const firstPage = await pdf.getPage(1);
-    const firstViewport = firstPage.getViewport({ scale: 1}); // Logical page size for StPageFlip (independent of render quality)
+    const firstViewport = firstPage.getViewport({ scale: 1.5}); // Logical page size for StPageFlip (independent of render quality)
 
     const pageWidth = firstViewport.width;
     const pageHeight = firstViewport.height;
