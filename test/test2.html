@@ -70,7 +70,7 @@ canvas{
 <script>
 
 const pdfUrl = "../assets/test.pdf";
-const RENDER_SCALE = 2; // Render resolution for PDF.js
+const RENDER_SCALE = Math.max(2, window.devicePixelRatio); // Render resolution for PDF.js
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
