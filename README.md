@@ -6,6 +6,10 @@
 
 A modern, interactive website dedicated to fostering a vibrant reading culture. Golden River provides a platform for book reviews, creative writing, reading activities, and community engagement.
 
+## 📱 Image
+![Preview img](assets/preview.png)
+![Preview img](assets/preview2.png)
+
 ## ✨ Features
 
 - 📚 **Book Reviews** - Discover curated book reviews in both article and video formats
