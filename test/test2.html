@@ -70,6 +70,7 @@ canvas{
 <script>
 
 const pdfUrl = "../assets/test.pdf";
+const RENDER_SCALE = Math.max(2, window.devicePixelRatio); // Render resolution for PDF.js
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
@@ -82,10 +83,15 @@ async function loadBook(){
 
     // Get the viewport size
     const firstPage = await pdf.getPage(1);
-    const firstViewport = firstPage.getViewport({ scale: 1.5 });
+    const firstViewport = firstPage.getViewport({ scale: 1}); // Logical page size for StPageFlip (independent of render quality)
 
     const pageWidth = firstViewport.width;
     const pageHeight = firstViewport.height;
+
+    // const scale = Math.round(Math.min(
+    //     (window.innerHeight * 0.95) / pageHeight,
+    //     (window.innerWidth * 0.45) / pageWidth
+    // ));
 
     // Render every page
     for(let i=1;i<=pdf.numPages;i++){
@@ -100,7 +106,7 @@ async function loadBook(){
 
         container.appendChild(wrapper);
 
-        const viewport=page.getViewport({scale:1.5});
+        const viewport=page.getViewport({scale: RENDER_SCALE});
 
         canvas.width=viewport.width;
         canvas.height=viewport.height;
@@ -116,7 +122,7 @@ async function loadBook(){
 
     const pageFlip=new St.PageFlip(container,{
         width:pageWidth,
-        height:pageWidth,
+        height:pageWidth, // this gives a bigger canvas size, generally better reading
 
         size:"stretch",
 
