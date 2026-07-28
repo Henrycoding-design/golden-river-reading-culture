@@ -7,29 +7,39 @@
 document.addEventListener('DOMContentLoaded', function() {
   
   // ========== THEME TOGGLE ==========
-  const themeToggle = document.querySelector('.theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle');
   const body = document.body;
   
   // Check for saved theme preference or default to light
   const savedTheme = localStorage.getItem('theme') || 'light';
   body.setAttribute('data-theme', savedTheme);
+
+  function updateThemeIcons(theme) {
+    document.querySelectorAll('.theme-icon').forEach(icon => {
+      icon.textContent = theme === 'light' ? '🌙' : '☀️';
+    });
+  }
+
+  updateThemeIcons(savedTheme);
   
   // Theme toggle click handler
-  if (themeToggle) {
+  themeToggles.forEach(themeToggle => {
     themeToggle.addEventListener('click', function() {
       const currentTheme = body.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
       
       body.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      updateThemeIcons(newTheme);
       
-      // Add rotation animation
-      this.style.transform = 'rotate(360deg)';
-      setTimeout(() => {
-        this.style.transform = 'rotate(0deg)';
-      }, 300);
+    //   // Add rotation animation
+    //   const themeIcon = this.querySelector('.theme-icon') || this;
+    //   themeIcon.style.transform = 'rotate(180deg)';
+    //   setTimeout(() => {
+    //     themeIcon.style.transform = 'rotate(0deg)';
+    //   }, 300);
     });
-  }
+  });
   
   // ========== ACTIVE NAVIGATION HIGHLIGHT ==========
   const currentPath = window.location.pathname;

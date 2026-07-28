@@ -592,6 +592,15 @@
   border-color: var(--accent-gold);
 }
 
+.creative-tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.creative-tab-content.active {
+  display: block;
+}
+
 /* ========== STORY READER ========== */
 .story-selector {
   display: grid;
