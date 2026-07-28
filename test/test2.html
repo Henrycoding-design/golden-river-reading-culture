@@ -1,3 +1,7 @@
+<!-- 
+ This is the main PDF flip approach test. Using StPageFlip, a modern, and actively maintained lib.
+ Compatible with modern websites
+  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,24 +25,27 @@
 
 body{
     background:#2f2f2f;
+    margin: 0;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
+    width:100vw;
     height:100vh;
-    overflow:hidden;
-    font-family:sans-serif;
+    font-family:sans-serif
+}
+
+#book{
+    /* this ratio makes the book seems more magazine-like */
+    width:calc(100vw - 60px);
+    height:calc(100vh - 20px);
+    display:none;
 }
 
 #loading{
     color:white;
     position:absolute;
     font-size:22px;
-}
-
-#book{
-    width:900px;
-    height:650px;
-    display:none;
 }
 
 .page{
@@ -73,6 +80,13 @@ async function loadBook(){
 
     const container = document.getElementById("book");
 
+    // Get the viewport size
+    const firstPage = await pdf.getPage(1);
+    const firstViewport = firstPage.getViewport({ scale: 1.5 });
+
+    const pageWidth = firstViewport.width;
+    const pageHeight = firstViewport.height;
+
     // Render every page
     for(let i=1;i<=pdf.numPages;i++){
 
@@ -101,16 +115,16 @@ async function loadBook(){
     container.style.display="block";
 
     const pageFlip=new St.PageFlip(container,{
-        width:450,
-        height:650,
+        width:pageWidth,
+        height:pageWidth,
 
         size:"stretch",
 
-        minWidth:315,
-        maxWidth:1000,
+        // minWidth:315,
+        // maxWidth:1000,
 
-        minHeight:420,
-        maxHeight:1350,
+        // minHeight:420,
+        // maxHeight:1350,
 
         maxShadowOpacity:0.5,
 
@@ -142,6 +156,11 @@ async function loadBook(){
             pageFlip.flipPrev();
         }
 
+    });
+
+    // Window resize
+    window.addEventListener("resize", () => {
+        pageFlip.update();
     });
 
 }
