@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Góc sáng tác - Truyện ngắn, tập thơ và truyện tranh từ Tạp Chí Đọc Golden River 2025-2026">
+  <title>Sáng Tác | Tạp Chí Đọc - Golden River</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-theme="light">
+  
+  <!-- ========== NAVIGATION BAR ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="logo-icon">📚</span>
+        <span class="brand-text">TẠP CHÍ ĐỌC | Golden River</span>
+        <span class="brand-short">TCD | GR</span>
+      </a>
+      
+      <ul class="navbar-nav">
+        <li><a href="index.html">Trang Chủ</a></li>
+        <li><a href="activities.html">Hoạt Động</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="creative.html">Sáng Tác</a></li>
+        <li><a href="credits.html">Đội Ngũ</a></li>
+      </ul>
+      
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <ul class="navbar-nav">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="activities.html">Hoạt Động</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="creative.html">Sáng Tác</a></li>
+      <li><a href="credits.html">Đội Ngũ</a></li>
+    </ul>
+  </div>
+  
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay"></div>
+  
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    
+    <!-- ========== PAGE HEADER ========== -->
+    <section style="background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-purple) 100%); padding: 6rem 0 4rem; color: white;">
+      <div class="container">
+        <div class="section-header" style="color: white;">
+          <h1 style="color: white; font-size: 3rem;">Góc Sáng Tác</h1>
+          <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+            Thưởng thức những tác phẩm văn học, thơ và truyện tranh từ các tác giả trẻ tài năng
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ========== CREATIVE CORNER TABS ========== -->
+    <section style="background-color: var(--bg-primary);">
+      <div class="container">
+        
+        <!-- Creative Tabs Navigation -->
+        <div class="creative-tabs">
+          <button class="creative-tab-btn active" data-tab="short-stories">
+            📖 Truyện Ngắn
+          </button>
+          <button class="creative-tab-btn" data-tab="poetry">
+            📝 Tập Thơ
+          </button>
+          <button class="creative-tab-btn" data-tab="comics">
+            🎨 Truyện Tranh / Manga
+          </button>
+        </div>
+        
+        <!-- ========== SHORT STORIES TAB ========== -->
+        <div class="creative-tab-content active" data-creative-content="short-stories">
+          
+          <div class="section-header">
+            <h2>Truyện Ngắn</h2>
+            <p>Những câu chuyện ngắn ý nghĩa từ các tác giả trẻ</p>
+          </div>
+          
+          <!-- Story Selector -->
+          <div class="story-selector">
+            
+            <!-- Story Card 1 -->
+            <div class="story-card" 
+                 data-story-title="Truyện trinh thám" 
+                 data-story-content="
+                   <p>Đồn cảnh sát Thâm Thủy Bộ lúc hai giờ sáng. 
+                   Ánh đèn tuýp trên trần nhà nhấp nháy liên hồi, phát ra tiếng kêu tè tè nhức óc như 
+                   tiếng ruồi bu quanh xác chết. Bụi bặm bám đầy trên những chồng hồ sơ cao ngất, lẫn 
+                   trong mùi cà phê rẻ tiền và mùi thuốc lá ám vào tường gạch qua nhiều thập kỷ.</p>
+                   
+                   <p>Bà bảo tôi: 'Cháu à, thành phố có vui không?' Tôi không trả lời, chỉ im lặng nhìn ra 
+                   cánh đồng lúa xanh mướt trước nhà. Nơi đó có những kỷ niệm tuổi thơ tôi không thể nào 
+                   quên - những buổi chiều chạy nhảy trên đồng, những trái dừa tươi ngọt lành, và những 
+                   câu chuyện cổ tích bà kể đêm đêm.</p>
+                   
+                   <p>Ngày hôm sau, tôi dậy sớm và đi dạo quanh làng. Tôi gặp bạn cũ, những người bạn 
+                   thời thơ ấu. Chúng tôi ngồi bên cầu làng, nhìn dòng nước chảy, nhắc những chuyện cũ. 
+                   Họ vẫn giữ được nét chân thành, trong sáng mà tôi đã đánh mất ở thành phố.</p>
+                   
+                   <p>Buổi chiều hôm ấy, tôi ngồi cùng bà trên hiên nhà. Bà kể cho tôi nghe về những 
+                   ngày tháng khó khăn, về tình yêu của bà và ông, về những hy vọng bà đặt vào tôi. 
+                   Tôi nhận ra rằng, dù có đi đâu, làm gì, thì quê hương vẫn luôn là nơi linh hồn tôi 
+                   thuộc về.</p>
+                   
+                   <p>Mùa hè năm ấy đã dạy tôi một bài học quý giá: Hạnh phúc không nằm ở những thứ 
+                   vật chất đắt tiền, mà nằm ở những giá trị tinh thần, ở tình yêu thương gia đình, 
+                   và ở những kỷ niệm đẹp đẽ của tuổi thơ.</p>
+                 ">
+              <div class="story-card-icon">📚</div>
+              <h3>Mùa Hè Năm Ấy</h3>
+              <p>Truyện ngắn về tuổi thơ, quê hương và những kỷ niệm đẹp đẽ</p>
+            </div>
+            
+            <!-- Story Card 2 -->
+            <div class="story-card" 
+                 data-story-title="Bức Thư Chưa Gửi" 
+                 data-story-content="
+                   <p>Căn phòng cũ kỹ, bụi bặm. Tôi lục lọi trong đống sách cũ của mẹ, tìm kiếm một 
+                   điều gì đó mà tôi không thể diễn tả thành lời. Và rồi, tôi tìm thấy nó - một bức thư 
+                   cũ kỹ, phong bì đã ố vàng, dòng chữ viết tay mẹ tôi.</p>
+                   
+                   <p>Bức thư được viết cách đây 25 năm, gửi cho một người mà tôi không biết. Trong thư, 
+                   mẹ viết về những ước mơ, về những hy vọng, và về một tình yêu mà mẹ đã giấu kín 
+                   trong lòng bấy lâu.</p>
+                   
+                   <p>Tôi đọc từng dòng, từng chữ, và nước mắt tôi rơi. Tôi nhận ra rằng mẹ cũng từng 
+                   là một cô gái trẻ, với những ước mơ và hoài bão giống như tôi bây giờ. Mẹ cũng từng 
+                   yêu, từng khóc, từng hy vọng, và từng thất vọng.</p>
+                   
+                   <p>Bức thư kết thúc bằng dòng chữ: 'Dù có đi đâu, anh vẫn luôn là người tôi yêu nhất. 
+                   Nhưng tôi chọn ở lại, vì gia đình, vì con gái tôi sắp ra đời.'</p>
+                   
+                   <p>Tôi hiểu rồi. Mẹ đã hy sinh tất cả để nuôi dưỡng tôi, để cho tôi một cuộc sống 
+                   tốt đẹp hơn. Và bức thư này là minh chứng cho tình yêu thương vô điều kiện của mẹ.</p>
+                   
+                   <p>Tôi giữ bức thư cẩn thận, như giữ một kho báu quý giá. Và tôi hứa với lòng rằng, 
+                   tôi sẽ sống thật tốt, để xứng đáng với tất cả những hy sinh của mẹ.</p>
+                 ">
+              <div class="story-card-icon">✉️</div>
+              <h3>Bức Thư Chưa Gửi</h3>
+              <p>Câu chuyện cảm động về tình mẫu tử và những hy sinh thầm lặng</p>
+            </div>
+            
+            <!-- Story Card 3 -->
+            <div class="story-card" 
+                 data-story-title="Hành Trình Tìm Mình" 
+                 data-story-content="
+                   <p>Lần đầu tiên trong đời, tôi cảm thấy lạc lõng. Tôi mất việc, mất bạn bè, và mất cả 
+                   định hướng trong cuộc sống. Tôi không biết mình muốn gì, không biết mình là ai, và 
+                   không biết mình sẽ đi đâu.</p>
+                   
+                   <p>Và rồi, tôi quyết định lên đường. Tôi mang theo một chiếc ba lô nhỏ, một ít tiền, 
+                   và trái tim đầy hoài bão. Tôi không có điểm đến cụ thể, chỉ muốn đi, muốn khám phá, 
+                   muốn tìm lại chính mình.</p>
+                   
+                   <p>Hành trình đưa tôi qua những ngọn núi cao, qua những cánh đồng bát ngát, qua những 
+                   làng quê yên bình. Tôi gặp những người bạn lạ, nghe những câu chuyện thú vị, và học 
+                   được những bài học quý giá về cuộc sống.</p>
+                   
+                   <p>Ở một ngôi làng nhỏ giữa miền núi, tôi gặp một cụ già sống một mình. Cụ bảo tôi: 
+                   'Con à, cuộc đời giống như một cuốn sách. Mỗi trang là một trải nghiệm, mỗi chương 
+                   là một giai đoạn. Đừng vội vàng lật trang, hãy tận hưởng từng khoảnh khắc.'</p>
+                   
+                   <p>Lời của cụ như một tia sáng trong đêm tối. Tôi nhận ra rằng, tôi đã quá vội vàng, 
+                   quá nóng vội để đạt được thành công mà quên mất việc tận hưởng hành trình. Tôi quên 
+                   mất rằng, cuộc sống không phải là đích đến, mà là chính hành trình đó.</p>
+                   
+                   <p>Tôi trở về nhà với một tâm hồn mới, với cái nhìn mới về cuộc sống. Tôi hiểu rằng, 
+                   để tìm thấy chính mình, đôi khi ta cần phải đi xa, trải nghiệm, và học hỏi. Và quan 
+                   trọng nhất là phải biết trân trọng từng khoảnh khắc hiện tại.</p>
+                 ">
+              <div class="story-card-icon">🗺️</div>
+              <h3>Hành Trình Tìm Mình</h3>
+              <p>Chuyến đi khám phá bản thân và những bài học cuộc sống</p>
+            </div>
+            
+            <!-- Story Card 4 -->
+            <div class="story-card" 
+                 data-story-title="Người Bạn Thân Nhất" 
+                 data-story-content="
+                   <p>Có một người bạn, tên là Minh. Chúng tôi quen nhau từ khi còn nhỏ, cùng lớn lên, 
+                   cùng học cùng trường, và cùng chia sẻ những ước mơ tuổi trẻ. Minh là người bạn thân 
+                   nhất của tôi, người hiểu tôi hơn cả bản thân tôi.</p>
+                   
+                   <p>Ngày tôi rời thành phố để đi du học, Minh đã tiễn tôi ở sân bay. Anh ấy không khóc, 
+                   chỉ nắm chặt tay tôi và nói: 'Hãy sống thật tốt, và nhớ rằng, dù có đi đâu, anh vẫn 
+                   luôn ở đây, chờ đợi em.'</p>
+                   
+                   <p>Năm năm trôi qua, tôi đã trở thành một kiến trúc sư thành công. Tôi có công việc 
+                   ổn định, mức lương cao, và cuộc sống sung túc. Nhưng tôi vẫn cảm thấy thiếu thứ gì 
+                   đó - một thứ mà tiền bạc và thành công không thể mua được.</p>
+                   
+                   <p>Một ngày, tôi nhận được cuộc gọi từ mẹ của Minh. Bà bảo Minh đã bị bệnh nặng, 
+                   và anh ấy muốn gặp tôi trước khi quá muộn. Tôi lập tức đặt vé máy bay về nước, 
+                   trái tim đau đớn và hối hận.</p>
+                   
+                   <p>Khi tôi đến bệnh viện, Minh đang nằm trên giường, gầy gò và yếu ớt. Nhưng khi 
+                   nhìn thấy tôi, mắt anh ấy sáng lên, và nụ cười hiện lên trên môi. Anh ấy nói: 'Anh 
+                   biết em sẽ về. Anh đã chờ em suốt 5 năm.'</p>
+                   
+                   <p>Chúng tôi nói chuyện suốt đêm đó, nhớ lại những kỷ niệm xưa, những ước mơ tuổi 
+                   trẻ, và những điều chúng tôi đã trải qua. Tôi nhận ra rằng, tình bạn chân thành là 
+                   món quà quý giá nhất mà cuộc đời mang lại.</p>
+                   
+                   <p>Minh đã ra đi một tuần sau đó. Nhưng anh ấy đã dạy tôi một bài học quý giá: Hãy 
+                   trân trọng những người bạn chân thành, vì họ là những người sẽ ở bên cạnh bạn trong 
+                   mọi hoàn cảnh, dù tốt hay xấu.</p>
+                 ">
+              <div class="story-card-icon">🤝</div>
+              <h3>Người Bạn Thân Nhất</h3>
+              <p>Chuyện về tình bạn chân thành và những giá trị cuộc sống</p>
+            </div>
+            
+          </div>
+          
+          <!-- Reader View -->
+          <div class="reader-view">
+            <div class="reader-controls">
+              <button class="back-to-stories">← Quay Lại</button>
+              
+              <div class="font-size-control">
+                <button data-action="decrease">A-</button>
+                <button data-action="reset">A</button>
+                <button data-action="increase">A+</button>
+              </div>
+              
+              <div class="theme-adjuster">
+                <button data-reader-theme="light">☀️</button>
+                <button data-reader-theme="sepia">📖</button>
+                <button data-reader-theme="dark">🌙</button>
+              </div>
+            </div>
+            
+            <div class="reader-content">
+              <!-- Story content will be injected here by JavaScript -->
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- ========== POETRY TAB ========== -->
+        <div class="creative-tab-content" data-creative-content="poetry">
+          
+          <div class="section-header">
+            <h2>Tập Thơ</h2>
+            <p>Những vần thơ dịu dàng, sâu lắng từ các nhà thơ trẻ</p>
+          </div>
+          
+          <!-- Poetry Grid -->
+          <div class="poetry-grid">
+            
+            <!-- Poem Card 1 -->
+            <div class="poem-card">
+              <h3>Mùa Thu Đến</h3>
+              <div class="poem-text">
+Mùa thu đến nhẹ nhàng
+Lá vàng rơi trên phố
+Gió heo may thổi nhẹ
+Nhớ thương ai xa xôi
+
+Chiều thu vàng úa
+Người tình ấy đâu rồi?
+Để lại nơi đây
+Nỗi nhớ dài vô tận
+
+Mùa thu năm ấy
+Ta cùng nhau ngắm nhìn
+Lá vàng rơi trên tay
+Và ước hẹn mai sau
+
+Giờ đây mùa thu lại đến
+Nhưng người ấy đã xa
+Chỉ còn lại mình tôi
+Với nỗi nhớ mùa thu cũ</div>
+              <div class="poem-author">— Nguyễn Văn An, lớp 11A1</div>
+            </div>
+            
+            <!-- Poem Card 2 -->
+            <div class="poem-card">
+              <h3>Ước Mơ Tuổi Trẻ</h3>
+              <div class="poem-text">
+Tuổi trẻ ơi, hãy ước mơ
+Ước mơ lớn lao và cao xa
+Đừng để thời gian trôi qua
+Mà chưa làm điều gì cả
+
+Hãy dám nghĩ, dám làm
+Dám thất bại, dám thử lại
+Vì thành công đến từ
+Những lần thất bại ấy
+
+Tuổi trẻ là thời điểm
+Để cháy hết mình
+Để theo đuổi đam mê
+Để sống thật với bản thân
+
+Hãy nắm lấy tuổi trẻ
+Và biến ước mơ thành hiện thực
+Vì mai sau này
+Bạn sẽ không hối tiếc</div>
+              <div class="poem-author">— Trần Thị Bình, lớp 12A3</div>
+            </div>
+            
+            <!-- Poem Card 3 -->
+            <div class="poem-card">
+              <h3>Quê Hương</h3>
+              <div class="poem-text">
+Quê hương ơi, tôi nhớ
+Nhớ cánh đồng lúa xanh
+Nhớ con đê bên sông
+Nơi tôi đã lớn lên
+
+Quê hương ơi, tôi nhớ
+Nhớ mái nhà tranh cũ
+Nhớ bà ngồi trên hiên
+Đan móc đợi tôi về
+
+Quê hương ơi, tôi nhớ
+Nhớ những bữa cơm gia đình
+Nhớ tiếng cười của mẹ
+Và tiếng ru hời ầu ơ
+
+Dù có đi đâu, làm gì
+Quê hương vẫn trong tôi
+Như một phần linh hồn
+Không thể nào tách rời</div>
+              <div class="poem-author">— Lê Văn Cường, lớp 10A2</div>
+            </div>
+            
+            <!-- Poem Card 4 -->
+            <div class="poem-card">
+              <h3>Hoa Cúc Vàng</h3>
+              <div class="poem-text">
+Hoa cúc vàng ngoài vườn
+Nở rộ dưới nắng xuân
+Như nụ cười của mẹ
+Ấm áp và dịu dàng
+
+Hoa cúc vàng nhỏ bé
+Nhưng không kém phần kiên cường
+Dù gió mưa bão giông
+Vẫn kiên cường tỏa hương
+
+Hoa cúc vàng ơi
+Hãy dạy tôi sống
+Sống kiên cường, sống lạc quan
+Dù cuộc đời có khó khăn
+
+Như hoa cúc vàng ngoài vườn
+Tôi sẽ luôn vươn mình
+Đón nắng mai, đón gió
+Và tỏa hương cuộc đời</div>
+              <div class="poem-author">— Phạm Thị Dung, lớp 11A4</div>
+            </div>
+            
+            <!-- Poem Card 5 -->
+            <div class="poem-card">
+              <h3>Đêm Thành Phố</h3>
+              <div class="poem-text">
+Đêm thành phố đèn vàng
+Như sao rơi xuống phố
+Người đi lại tấp nập
+Ai về nhà ai ngủ
+
+Tôi đứng nhìn từ xa
+Thành phố lung linh ánh đèn
+Như một đại dương sáng
+Trong đêm đen bao la
+
+Đêm thành phố ơi
+Có biết tôi đang nhớ
+Nhớ quê hương xa xôi
+Nhớ mái nhà cũ kỹ
+
+Đèn thành phố vẫn sáng
+Nhưng sao lòng tôi vẫn trống
+Vì nơi đây chỉ là
+Nơi tôi ở, không phải nhà</div>
+              <div class="poem-author">— Hoàng Văn Em, lớp 12A1</div>
+            </div>
+            
+            <!-- Poem Card 6 -->
+            <div class="poem-card">
+              <h3>Mẹ Tôi</h3>
+              <div class="poem-text">
+Mẹ tôi không đẹp
+Nhưng mẹ là người phụ nữ
+Tuyệt vời nhất đời tôi
+
+Mẹ tôi không giàu
+Nhưng mẹ cho tôi tất cả
+Những gì quý giá nhất
+
+Mẹ tôi không khỏe
+Nhưng mẹ vẫn làm việc
+Để nuôi dưỡng tôi lớn khôn
+
+Mẹ tôi không than vãn
+Dù cuộc đời mẹ có khó khăn
+Mẹ chỉ biết hy sinh thầm lặng
+
+Mẹ tôi ơi
+Con yêu mẹ rất nhiều
+Mẹ là người phụ nữ
+Tuyệt vời nhất đời con</div>
+              <div class="poem-author">— Nguyễn Thị Phương, lớp 10A3</div>
+            </div>
+            
+          </div>
+        </div>
+        
+        <!-- ========== COMICS / MANGA TAB ========== -->
+        <div class="creative-tab-content" data-creative-content="comics">
+          
+          <div class="section-header">
+            <h2>Truyện Tranh / Manga</h2>
+            <p>Những câu chuyện tranh sinh động và hấp dẫn</p>
+          </div>
+          
+          <!-- Comic Carousel -->
+          <div class="comic-carousel">
+            
+            <!-- Comic Slide 1 -->
+            <div class="comic-slide active">
+              <img src="https://images.unsplash.com/photo-1513475382588-d5e3a162c7f5?w=800&h=1000&fit=crop" 
+                   alt="Truyện tranh trang 1"
+                   data-src="https://images.unsplash.com/photo-1513475382588-d5e3a162c7f5?w=1200&h=1500&fit=crop">
+              <div style="padding: 2rem; text-align: center; background: var(--bg-card);">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Chương 1: Khởi Đầu</h3>
+                <p style="color: var(--text-secondary);">Trang 1 - Giới thiệu nhân vật và bối cảnh câu chuyện</p>
+              </div>
+            </div>
+            
+            <!-- Comic Slide 2 -->
+            <div class="comic-slide">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop" 
+                   alt="Truyện tranh trang 2"
+                   data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=1500&fit=crop">
+              <div style="padding: 2rem; text-align: center; background: var(--bg-card);">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Chương 1: Khởi Đầu</h3>
+                <p style="color: var(--text-secondary);">Trang 2 - Cuộc gặp gỡ định mệnh</p>
+              </div>
+            </div>
+            
+            <!-- Comic Slide 3 -->
+            <div class="comic-slide">
+              <img src="https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=800&h=1000&fit=crop" 
+                   alt="Truyện tranh trang 3"
+                   data-src="https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=1200&h=1500&fit=crop">
+              <div style="padding: 2rem; text-align: center; background: var(--bg-card);">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Chương 1: Khởi Đầu</h3>
+                <p style="color: var(--text-secondary);">Trang 3 - Bước ngoặt đầu tiên</p>
+              </div>
+            </div>
+            
+            <!-- Comic Slide 4 -->
+            <div class="comic-slide">
+              <img src="https://images.unsplash.com/photo-1518709268805-4d9042716b73?w=800&h=1000&fit=crop" 
+                   alt="Truyện tranh trang 4"
+                   data-src="https://images.unsplash.com/photo-1518709268805-4d9042716b73?w=1200&h=1500&fit=crop">
+              <div style="padding: 2rem; text-align: center; background: var(--bg-card);">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Chương 1: Khởi Đầu</h3>
+                <p style="color: var(--text-secondary);">Trang 4 - Thử thách đầu tiên</p>
+              </div>
+            </div>
+            
+            <!-- Comic Slide 5 -->
+            <div class="comic-slide">
+              <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=800&h=1000&fit=crop" 
+                   alt="Truyện tranh trang 5"
+                   data-src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=1200&h=1500&fit=crop">
+              <div style="padding: 2rem; text-align: center; background: var(--bg-card);">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Chương 1: Khởi Đầu</h3>
+                <p style="color: var(--text-secondary);">Trang 5 - Kết thúc chương 1</p>
+              </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="comic-nav comic-prev">‹</button>
+            <button class="comic-nav comic-next">›</button>
+            
+            <!-- Thumbnails -->
+            <div class="comic-thumbnails">
+              <div class="comic-thumbnail active" data-slide="0"></div>
+              <div class="comic-thumbnail" data-slide="1"></div>
+              <div class="comic-thumbnail" data-slide="2"></div>
+              <div class="comic-thumbnail" data-slide="3"></div>
+              <div class="comic-thumbnail" data-slide="4"></div>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025-2026 Tạp Chí Đọc | Golden River. Made with <span class="heart">❤️</span> by Editorial Team</p>
+      </div>
+    </footer>
+    
+  </main>
+  
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/interactive.js"></script>
+  
+</body>
+</html>

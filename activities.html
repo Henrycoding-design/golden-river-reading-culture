@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hoạt động đọc sách tại trường Golden River - Tạp Chí Đọc 2025-2026">
+  <title>Hoạt Động Đọc | Tạp Chí Đọc - Golden River</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-theme="light">
+  
+  <!-- ========== NAVIGATION BAR ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="logo-icon">📚</span>
+        <span class="brand-text">TẠP CHÍ ĐỌC | Golden River</span>
+        <span class="brand-short">TCD | GR</span>
+      </a>
+      
+      <ul class="navbar-nav">
+        <li><a href="index.html">Trang Chủ</a></li>
+        <li><a href="activities.html">Hoạt Động</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="creative.html">Sáng Tác</a></li>
+        <li><a href="credits.html">Đội Ngũ</a></li>
+      </ul>
+      
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+      </button>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <ul class="navbar-nav">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="activities.html">Hoạt Động</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="creative.html">Sáng Tác</a></li>
+      <li><a href="credits.html">Đội Ngũ</a></li>
+    </ul>
+  </div>
+  
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay"></div>
+  
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    
+    <!-- ========== PAGE HEADER ========== -->
+    <section style="background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-gold) 100%); padding: 6rem 0 4rem; color: white;">
+      <div class="container">
+        <div class="section-header" style="color: white;">
+          <h1 style="color: white; font-size: 3rem;">Hoạt Động Đọc Sách</h1>
+          <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+            Khám phá những sự kiện, hoạt động đọc sách sôi nổi và ý nghĩa tại trường Golden River
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ========== ACTIVITIES GALLERY ========== -->
+    <section style="background-color: var(--bg-primary);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Khoảnh Khắc Đáng Nhớ</h2>
+          <p>Hình ảnh từ các hoạt động đọc sách, sự kiện văn hóa và triển lãm sách</p>
+        </div>
+        
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+          
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" 
+                 alt="Ngày hội đọc sách" 
+                 data-src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Ngày Hội Đọc Sách 2025</h3>
+              <p>Sự kiện đọc sách lớn nhất năm với hơn 500 học sinh tham gia</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop" 
+                 alt="Câu lạc bộ đọc sách" 
+                 data-src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>CLB Đọc Sách "Golden Pages"</h3>
+              <p>Hoạt động định kỳ mỗi thứ 6 hàng tuần tại thư viện trường</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop" 
+                 alt="Triển lãm sách" 
+                 data-src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Triển Lãm Sách Mùa Hè</h3>
+              <p>Trưng bày hơn 1000 đầu sách mới từ các nhà xuất bản uy tín</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&h=600&fit=crop" 
+                 alt="Workshop viết lách" 
+                 data-src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3> Workshop Viết Lách Sáng Tạo</h3>
+              <p>Học viết truyện ngắn và thơ cùng các nhà văn trẻ</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 5 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" 
+                 alt="Cuộc thi đọc sách" 
+                 data-src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Cuộc Thi "Đọc Sách Cùng Bạn"</h3>
+              <p>Thi đua đọc sách và chia sẻ cảm nhận giữa các lớp</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 6 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" 
+                 alt="Giao lưu với tác giả" 
+                 data-src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Giao Lưu Với Tác Giả Trẻ</h3>
+              <p>Buổi gặp gỡ và chia sẻ kinh nghiệm viết lách với các tác giả nổi tiếng</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 7 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800&h=600&fit=crop" 
+                 alt="Thư viện học đường" 
+                 data-src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Nâng Cấp Thư Viện Học Đường</h3>
+              <p>Không gian đọc sách mới với hơn 3000 đầu sách đa dạng</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 8 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800&h=600&fit=crop" 
+                 alt="Đêm thơ" 
+                 data-src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Đêm Thơ "Vần Thơ Mùa Thu"</h3>
+              <p>Chương trình thơ nhạc đặc sắc với các tiết mục đọc thơ</p>
+            </div>
+          </div>
+          
+          <!-- Gallery Item 9 -->
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1455390582262-844c77584712?w=800&h=600&fit=crop" 
+                 alt="Book fair" 
+                 data-src="https://images.unsplash.com/photo-1455390582262-844c77584712?w=1200&h=900&fit=crop">
+            <div class="gallery-overlay">
+              <h3>Hội Chợ Sách "Golden Book Fair"</h3>
+              <p>Sự kiện giao lưu, trao đổi và mua bán sách cũ, sách mới</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- ========== UPCOMING EVENTS ========== -->
+    <section style="background-color: var(--bg-card);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Sự Kiện Sắp Tới</h2>
+          <p>Đừng bỏ lỡ những hoạt động đọc sách thú vị trong thời gian tới</p>
+        </div>
+        
+        <div class="grid grid-3">
+          
+          <!-- Event Card 1 -->
+          <div class="card" data-animate>
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">📚</div>
+            <h3 style="text-align: center; color: var(--accent-gold);">Tuần Lễ Sách Quốc Tế</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+              <strong>Thời gian:</strong> 15-21/04/2026<br>
+              <strong>Địa điểm:</strong> Thư viện trường
+            </p>
+            <p style="text-align: center; color: var(--text-secondary);">
+              Hoạt động đọc sách với chủ đề "Khám Phá Thế Giới Qua Sách"
+            </p>
+          </div>
+          
+          <!-- Event Card 2 -->
+          <div class="card" data-animate>
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">✍️</div>
+            <h3 style="text-align: center; color: var(--accent-teal);">Cuộc Thi Viết "Thắp Sáng Trang Văn"</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+              <strong>Thời gian:</strong> 01-30/05/2026<br>
+              <strong>Đối tượng:</strong> Tất cả học sinh
+            </p>
+            <p style="text-align: center; color: var(--text-secondary);">
+              Cuộc thi viết truyện ngắn, thơ và review sách
+            </p>
+          </div>
+          
+          <!-- Event Card 3 -->
+          <div class="card" data-animate>
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">🎭</div>
+            <h3 style="text-align: center; color: var(--accent-purple);">Giao Lưu Với Nhà Văn</h3>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+              <strong>Thời gian:</strong> 10/06/2026<br>
+              <strong>Địa điểm:</strong> Hội trường lớn
+            </p>
+            <p style="text-align: center; color: var(--text-secondary);">
+              Buổi gặp gỡ và chia sẻ cùng nhà văn nổi tiếng
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025-2026 Tạp Chí Đọc | Golden River. Made with <span class="heart">❤️</span> by Editorial Team</p>
+      </div>
+    </footer>
+    
+  </main>
+  
+  <!-- Lightbox Modal -->
+  <div class="lightbox">
+    <div class="lightbox-content"></div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/interactive.js"></script>
+  
+</body>
+</html>
