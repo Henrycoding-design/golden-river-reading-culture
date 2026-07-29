@@ -2,6 +2,8 @@
  This is the main PDF flip approach test. Using StPageFlip, a modern, and actively maintained lib.
  Compatible with modern websites
  This file also have windowed loading pages (+-10), reducing memory, more compatible with mobile
+ also integrated with dynamic usePortrait param to enhance readability on both small and big screens
+ by switching between one-page and two-page display
   -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <!-- StPageFlip -->
-<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+<!--
+ StPageFlip v2.0.7
+ Pinned version for project stability.
+ Tested with PDF.js 3.11.174.
+-->
+ <!--
+ Dependencies pinned:
+ - PDF.js 3.11.174
+ - StPageFlip 2.0.7
+
+ Do not upgrade without regression testing.
+-->
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 
 <style>
 *{
@@ -108,24 +122,28 @@ async function loadBook(){
             return;
 
         const wrapper = wrappers[pageNumber - 1];
-
         const page = await pdf.getPage(pageNumber);
+        const viewport = page.getViewport({ scale: RENDER_SCALE });
 
-        const viewport = page.getViewport({
-            scale: RENDER_SCALE
-        });
-
+        // Create a temporary, off-screen canvas to render the PDF page
         const canvas = document.createElement("canvas");
-
         canvas.width = viewport.width;
         canvas.height = viewport.height;
-
-        wrapper.replaceChildren(canvas);
 
         await page.render({
             canvasContext: canvas.getContext("2d"),
             viewport
         }).promise;
+
+        // Convert the rendered canvas into an image string
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL("image/webp", 0.8); // Using webp for better mobile performance
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.display = "block";
+
+        // Put the safe, cloneable image inside the wrapper instead of the canvas
+        wrapper.replaceChildren(img);
 
         rendered.add(pageNumber);
     }
@@ -163,12 +181,20 @@ async function loadBook(){
     document.getElementById("loading").style.display="none";
     container.style.display="block";
 
-    const pageFlip = new St.PageFlip(container, {
-        width: pageWidth,
-        height: pageHeight,
+    const mobile = window.innerWidth < 768;
 
-        size: "stretch",
-        autoSize: true,
+    const scale = mobile ? 0.5 : 0.75;
+
+    const pageFlip = new St.PageFlip(container, {
+        width: pageWidth * scale,
+        height: pageHeight * scale,
+
+        // size: "stretch",
+        // autoSize: true,
+        // Don't use size: "stretch".
+        // It breaks usePortrait in this version of StPageFlip.
+
+        usePortrait: true,
 
         showCover: true,
         drawShadow: true,
@@ -181,8 +207,10 @@ async function loadBook(){
         startPage: 0
     });
 
-    // preload wrappers
     pageFlip.loadFromHTML(wrappers);
+
+    await new Promise(requestAnimationFrame);
+
     // start rendering
     await updateWindow(1);
 
@@ -191,6 +219,20 @@ async function loadBook(){
 
         updateWindow(e.data + 1);
 
+    });
+
+    pageFlip.on("changeOrientation", e => {
+        console.log(
+            e.data,
+            window.innerWidth,
+            window.innerHeight,
+            container.clientWidth,
+            container.clientHeight
+        );
+    });
+
+    window.addEventListener("resize", () => { // always working
+        console.log("resize", window.innerWidth, window.innerHeight);
     });
 
     // Keyboard navigation
@@ -206,15 +248,14 @@ async function loadBook(){
 
     });
 
-    // Window resize with debounce
-    let resizeTimer;
-
+    // Window resize
     window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
+        pageFlip.updateOrientation();
 
-        resizeTimer = setTimeout(() => {
-            pageFlip.update();
-        }, 100);
+        console.log(
+            pageFlip.getOrientation(),
+            pageFlip.getBoundsRect()
+        );
     });
 
 }
