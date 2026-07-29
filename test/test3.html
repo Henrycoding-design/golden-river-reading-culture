@@ -1,6 +1,7 @@
 <!-- 
  This is the main PDF flip approach test. Using StPageFlip, a modern, and actively maintained lib.
  Compatible with modern websites
+ This file also have windowed loading pages (+-10), reducing memory, more compatible with mobile
   -->
 <!DOCTYPE html>
 <html lang="en">
@@ -87,33 +88,76 @@ async function loadBook(){
     const pageWidth = firstViewport.width;
     const pageHeight = firstViewport.height;
 
-    // const scale = Math.round(Math.min(
-    //     (window.innerHeight * 0.95) / pageHeight,
-    //     (window.innerWidth * 0.45) / pageWidth
-    // ));
+    const wrappers = [];
+    const rendered = new Set();
 
-    // Render every page
-    for(let i=1;i<=pdf.numPages;i++){
+    //load wrappers first
+    for (let i = 1; i <= pdf.numPages; i++) {
 
-        const page = await pdf.getPage(i);
+        const wrapper = document.createElement("div");
+        wrapper.className = "page";
 
-        const wrapper=document.createElement("div");
-        wrapper.className="page";
-
-        const canvas=document.createElement("canvas");
-        wrapper.appendChild(canvas);
+        wrapper.dataset.page = i;
 
         container.appendChild(wrapper);
+        wrappers.push(wrapper);
+    }
 
-        const viewport = page.getViewport({ scale: RENDER_SCALE });
+    async function renderPage(pageNumber) {
+        if (rendered.has(pageNumber))
+            return;
+
+        const wrapper = wrappers[pageNumber - 1];
+
+        const page = await pdf.getPage(pageNumber);
+
+        const viewport = page.getViewport({
+            scale: RENDER_SCALE
+        });
+
+        const canvas = document.createElement("canvas");
 
         canvas.width = viewport.width;
         canvas.height = viewport.height;
+
+        wrapper.replaceChildren(canvas);
 
         await page.render({
             canvasContext: canvas.getContext("2d"),
             viewport
         }).promise;
+
+        rendered.add(pageNumber);
+    }
+
+    function unloadPage(pageNumber) {
+        if (!rendered.has(pageNumber))
+            return;
+
+        wrappers[pageNumber - 1].replaceChildren();
+
+        rendered.delete(pageNumber);
+    }
+
+    const WINDOW = 10;
+
+    async function updateWindow(current) {
+
+        const start = Math.max(1, current - WINDOW);
+        const end = Math.min(pdf.numPages, current + WINDOW);
+
+        // Render nearby pages
+        for (let i = start; i <= end; i++) {
+            renderPage(i);
+        }
+
+        // Remove distant pages
+        for (const page of [...rendered]) {
+
+            if (page < start || page > end)
+                unloadPage(page);
+
+        }
     }
 
     document.getElementById("loading").style.display="none";
@@ -137,7 +181,17 @@ async function loadBook(){
         startPage: 0
     });
 
-    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+    // preload wrappers
+    pageFlip.loadFromHTML(wrappers);
+    // start rendering
+    await updateWindow(1);
+
+    // update loading pages/unloading pages on flip
+    pageFlip.on("flip", e => {
+
+        updateWindow(e.data + 1);
+
+    });
 
     // Keyboard navigation
     document.addEventListener("keydown",(e)=>{
