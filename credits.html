@@ -4,41 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Đội ngũ biên tập và credits - Tạp Chí Đọc Golden River 2025-2026">
-  <title>Đội Ngũ | Tạp Chí Đọc - Golden River</title>
-  
+  <title>Đội Ngũ | Golden River - Thắp Sáng Trang Văn</title>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
 <body data-theme="light">
-  
+
   <!-- ========== NAVIGATION BAR ========== -->
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <span class="logo-icon">📚</span>
+        <span class="logo-icon"><img src="https://inviva.vn/wp-content/uploads/2026/04/logo-vinschool-vector-02.png" alt="Vinschool"></span>
         <span class="brand-text">TẠP CHÍ ĐỌC | Golden River</span>
         <span class="brand-short">TCD | GR</span>
       </a>
-      
-      <ul class="navbar-nav">
-        <li><a href="index.html">Trang Chủ</a></li>
-        <li><a href="activities.html">Hoạt Động</a></li>
-        <li><a href="reviews.html">Reviews</a></li>
-        <li><a href="creative.html">Sáng Tác</a></li>
-        <li><a href="credits.html">Đội Ngũ</a></li>
-      </ul>
-      
-      <button class="theme-toggle" aria-label="Toggle dark mode">
-        <span class="theme-icon">🌙</span>
-      </button>
-      
+
+      <div class="navbar-actions">
+        <ul class="navbar-nav">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="view.html" target="_blank" rel="noopener">Đọc Tạp Chí</a></li>
+          <li><a href="credits.html">Đội Ngũ</a></li>
+        </ul>
+
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
       <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
         <span></span>
         <span></span>
@@ -46,14 +46,12 @@
       </button>
     </div>
   </nav>
-  
+
   <!-- Mobile Drawer -->
   <div class="mobile-drawer">
     <ul class="navbar-nav">
       <li><a href="index.html">Trang Chủ</a></li>
-      <li><a href="activities.html">Hoạt Động</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="creative.html">Sáng Tác</a></li>
+      <li><a href="view.html" target="_blank" rel="noopener">Đọc Tạp Chí</a></li>
       <li><a href="credits.html">Đội Ngũ</a></li>
     </ul>
 
@@ -62,262 +60,144 @@
       <span class="theme-icon">🌙</span>
     </button>
   </div>
-  
+
   <!-- Mobile Overlay -->
   <div class="mobile-overlay"></div>
-  
+
   <!-- ========== MAIN CONTENT ========== -->
   <main>
-    
+
     <!-- ========== PAGE HEADER ========== -->
-    <section style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-teal) 100%); padding: 6rem 0 4rem; color: white;">
+    <section class="page-hero credits-hero">
       <div class="container">
-        <div class="section-header" style="color: white;">
-          <h1 style="color: white; font-size: 3rem;">Đội Ngũ Biên Tập</h1>
+        <div class="section-header">
+          <h1>Đội Ngũ Biên Tập</h1>
           <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
-            Gặp gỡ những người đã làm nên Tạp Chí Đọc (2025-2026) - Golden River
+            Những người đã cùng hoàn thiện Tạp Chí Đọc (2025-2026) - Golden River
           </p>
         </div>
       </div>
     </section>
-    
+
     <!-- ========== EDITORIAL BOARD ========== -->
-    <section style="background-color: var(--bg-primary);">
+    <section>
       <div class="container">
-        
+
         <div class="section-header">
           <h2>Ban Biên Tập</h2>
-          <p>Những người đã dành tâm huyết để tạo nên ấn phẩm này</p>
+          <p>Cảm ơn từng thành viên đã góp nội dung, hình ảnh, biên tập và tinh thần cho ấn phẩm</p>
         </div>
-        
+
         <!-- Team Grid -->
         <div class="team-grid">
-          
-          <!-- Team Member 1 -->
+
           <div class="team-member" data-animate>
             <div class="team-avatar">👩‍💼</div>
             <h3>Lê Nguyễn Bảo Ngọc</h3>
             <p class="role">Tổng Biên Tập</p>
-            <p class="description">Tổng biên tập Tạp Chí Đọc (2025-2026)</p>
+            <p class="description">Định hướng chủ đề, lời nói đầu và tinh thần chung của tạp chí.</p>
           </div>
-          
-          <!-- Team Member 2 -->
+
           <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍💻</div>
+            <div class="team-avatar">👩‍💻</div>
             <h3>Đỗ Quỳnh Chi</h3>
             <p class="role">Trưởng Ban Biên Tập</p>
-            <p class="description">Trưởng ban biên tập - Điều phối nội dung và chất lượng bài viết</p>
+            <p class="description">Điều phối nội dung, rà soát chất lượng và thống nhất bản thảo.</p>
           </div>
-          
-          <!-- Team Member 3 -->
+
           <div class="team-member" data-animate>
             <div class="team-avatar">👩‍🎨</div>
             <h3>Trần Mỹ Nhàn</h3>
             <p class="role">Biên Tập Viên</p>
-            <p class="description">Biên tập viên - Phụ trách nội dung và sản xuất</p>
+            <p class="description">Phụ trách biên tập nội dung và hỗ trợ hoàn thiện bố cục ấn phẩm.</p>
           </div>
-          
-          <!-- Team Member 4 -->
+
           <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍✍️</div>
+            <div class="team-avatar">👩‍✍️</div>
             <h3>Đặng Ngân Hà</h3>
             <p class="role">Biên Tập Viên</p>
-            <p class="description">Biên tập viên - Hỗ trợ biên tập và phát triển nội dung</p>
+            <p class="description">Hỗ trợ chọn lọc, chỉnh sửa bài viết và chuẩn bị nội dung phát hành.</p>
           </div>
-          
-          <!-- Team Member 5 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👩‍📸</div>
-            <h3>Hoàng Thị Mai</h3>
-            <p class="role">Trưởng Ban Nhiếp Ảnh</p>
-            <p class="description">Lớp 11A2 - Chụp ảnh và quay video các hoạt động của tạp chí</p>
-          </div>
-          
-          <!-- Team Member 6 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍💼</div>
-            <h3>Vũ Văn Nam</h3>
-            <p class="role">Trưởng Ban Truyền Thông</p>
-            <p class="description">Lớp 12A4 - Quản lý mạng xã hội và truyền thông tạp chí</p>
-          </div>
-          
-          <!-- Team Member 7 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👩‍🔬</div>
-            <h3>Đặng Thị Lan</h3>
-            <p class="role">Biên Tập Viên</p>
-            <p class="description">Lớp 11A3 - Phụ trách mục Reviews và nghiên cứu sách</p>
-          </div>
-          
-          <!-- Team Member 8 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍🎓</div>
-            <h3>Bùi Văn Phong</h3>
-            <p class="role">Biên Tập Viên</p>
-            <p class="description">Lớp 12A2 - Phụ trách mục Sáng Tác và tuyển chọn tác phẩm</p>
-          </div>
-          
-          <!-- Team Member 9 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👩‍🏫</div>
-            <h3>Ngô Thị Hương</h3>
-            <p class="role">Giáo Viên Hướng Dẫn</p>
-            <p class="description">Giáo viên chủ nhiệm - Người hướng dẫn và hỗ trợ đội ngũ biên tập</p>
-          </div>
-          
-          <!-- Team Member 10 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍💡</div>
-            <h3>Lý Văn Hoàng</h3>
-            <p class="role">Cố Vấn Kỹ Thuật</p>
-            <p class="description">Lớp 12A5 - Hỗ trợ phát triển website và các công nghệ số</p>
-          </div>
-          
-          <!-- Team Member 11 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👩‍📝</div>
-            <h3>Trần Thị Ngọc</h3>
-            <p class="role">Biên Tập Viên</p>
-            <p class="description">Lớp 11A1 - Phụ trách mục Hoạt Động và sự kiện</p>
-          </div>
-          
-          <!-- Team Member 12 -->
-          <div class="team-member" data-animate>
-            <div class="team-avatar">👨‍🎨</div>
-            <h3>Đỗ Văn Tuấn</h3>
-            <p class="role">Biên Tập Viên</p>
-            <p class="description">Lớp 12A3 - Hỗ trợ thiết kế và sáng tạo nội dung</p>
-          </div>
-          
+
         </div>
-        
+
       </div>
     </section>
-    
+
     <!-- ========== SPECIAL THANKS ========== -->
-    <section style="background-color: var(--bg-card);">
+    <section class="thanks-section">
       <div class="container">
         <div class="section-header">
           <h2>Lời Cảm Ơn Đặc Biệt</h2>
-          <p>Gửi đến những người đã hỗ trợ và đồng hành cùng tạp chí</p>
+          <p>Gửi đến những tập thể và cá nhân đã đồng hành cùng tạp chí.</p>
         </div>
-        
+
         <div class="grid grid-2">
-          
+
           <div class="card" data-animate>
-            <h3 style="color: var(--accent-gold);">📚 Thư Viện Trường</h3>
-            <p>Cảm ơn thư viện trường đã hỗ trợ không gian, tài liệu và nguồn sách quý giá cho đội ngũ biên tập.</p>
+            <h3>📚 Thư Viện Trường</h3>
+            <p>Cảm ơn thư viện đã truyền cảm hứng, hỗ trợ tư liệu và tạo không gian để văn hóa đọc được nuôi dưỡng.</p>
           </div>
-          
+
           <div class="card" data-animate>
-            <h3 style="color: var(--accent-teal);">👨‍🏫 Ban Giám Hiệu</h3>
-            <p>Ghi nhận sự hỗ trợ và tạo điều kiện từ Ban Giám Hiệu nhà trường để tạp chí có thể ra đời.</p>
+            <h3>👨‍🏫 Ban Giám Hiệu</h3>
+            <p>Ghi nhận sự hỗ trợ và tạo điều kiện để tạp chí có thể được hoàn thiện và chia sẻ đến cộng đồng Vinser.</p>
           </div>
-          
+
           <div class="card" data-animate>
-            <h3 style="color: var(--accent-purple);">✍️ Các Tác Giả Trẻ</h3>
-            <p>Cảm ơn các bạn học sinh đã gửi gắm những tác phẩm sáng tác của mình, làm giàu cho nội dung tạp chí.</p>
+            <h3>✍️ Các Tác Giả Trẻ</h3>
+            <p>Cảm ơn các bạn học sinh đã gửi gắm suy nghĩ, cảm xúc và tình yêu văn chương trong từng trang viết.</p>
           </div>
-          
+
           <div class="card" data-animate>
-            <h3 style="color: var(--accent-gold);">👨‍👩‍👧 Phụ Huynh</h3>
+            <h3>👨‍👩‍👧 Phụ Huynh</h3>
             <p>Ghi nhận sự ủng hộ và động viên từ phụ huynh, người đã luôn bên cạnh chúng em trong hành trình này.</p>
           </div>
-          
+
         </div>
       </div>
     </section>
-    
-    <!-- ========== GUESTBOOK / COMMENTS ========== -->
-    <section style="background-color: var(--bg-primary);">
-      <div class="container">
-        
-        <div class="guestbook">
-          <h3>💬 Sổ Lưu Bút - Gửi Lời Nhắn Đến Tạp Chí</h3>
-          <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-            Hãy để lại lời nhắn, cảm nhận hoặc góp ý của bạn cho Tạp Chí Đọc
-          </p>
-          
-          <form class="comment-form">
-            <input type="text" 
-                   name="name" 
-                   placeholder="Họ và tên của bạn" 
-                   required
-                   aria-label="Họ và tên">
-            
-            <input type="email" 
-                   name="email" 
-                   placeholder="Email (không bắt buộc)" 
-                   aria-label="Email">
-            
-            <textarea name="message" 
-                      placeholder="Lời nhắn, cảm nhận hoặc góp ý của bạn..." 
-                      required
-                      aria-label="Lời nhắn"></textarea>
-            
-            <button type="submit" class="btn btn-primary">Gửi Lời Nhắn</button>
-          </form>
-          
-          <!-- PLACEHOLDER: Display submitted comments here -->
-          <div id="comments-display" style="margin-top: 3rem; display: none;">
-            <h4 style="color: var(--accent-gold); margin-bottom: 1.5rem;">Những Lời Nhắn Gần Đây</h4>
-            <div id="comments-list">
-              <!-- Comments will be displayed here -->
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-    
+
     <!-- ========== COLOPHON ========== -->
-    <section style="background-color: var(--bg-card);">
+    <section>
       <div class="container">
         <div class="section-header">
           <h2>Thông Tin Ấn Phẩm</h2>
         </div>
-        
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          
+
+        <div class="colophon">
           <div class="card" data-animate>
-            <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem;">📖 Tạp Chí Đọc (2025-2026)</h3>
-            
-            <div style="display: grid; gap: 1rem; text-align: left; color: var(--text-secondary);">
-              <p><strong style="color: var(--text-primary);">Tên ấn phẩm:</strong> Tạp Chí Đọc</p>
-              <p><strong style="color: var(--text-primary);">Mùa:</strong> 2025-2026</p>
-              <p><strong style="color: var(--text-primary);">Chủ đề:</strong> "Thắp Sáng Trang Văn"</p>
-              <p><strong style="color: var(--text-primary);">Đơn vị phát hành:</strong> Trường THPT Golden River</p>
-              <p><strong style="color: var(--text-primary);">Đội ngũ biên tập:</strong> Học sinh lớp 10, 11, 12</p>
-              <p><strong style="color: var(--text-primary);">Giáo viên hướng dẫn:</strong> Ngô Thị Hương</p>
-              <p><strong style="color: var(--text-primary);">Thiết kế & Phát triển:</strong> Lý Văn Hoàng</p>
-              <p><strong style="color: var(--text-primary);">Nền tảng:</strong> HTML5, CSS3, JavaScript (ES6+)</p>
-              <p><strong style="color: var(--text-primary);">Hosting:</strong> Vercel Static Hosting</p>
-              <p><strong style="color: var(--text-primary);">Ngày phát hành:</strong> Tháng 06/2026</p>
+            <h3>📖 Tạp Chí Đọc (2025-2026)</h3>
+
+            <div class="publication-details">
+              <p><strong>Tên ấn phẩm:</strong> Tạp Chí Đọc</p>
+              <p><strong>Mùa:</strong> 2025-2026</p>
+              <p><strong>Chủ đề:</strong> "Thắp Sáng Trang Văn"</p>
+              <p><strong>Đơn vị phát hành:</strong> Vinschool Golden River</p>
+              <p><strong>Định dạng trực tuyến:</strong> PDF Flip Book</p>
+              <p><strong>Nền tảng:</strong> Website</p>
+              <!-- <p><strong>Ngày phát hành dự kiến:</strong> Tháng 06/2026</p> -->
             </div>
-            
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--bg-primary);">
-              <p style="font-style: italic; color: var(--text-secondary);">
-                "Mỗi trang sách là một ngọn lửa, thắp sáng tri thức và ước mơ."
-              </p>
+
+            <div class="colophon-quote">
+              <p>"Mỗi trang sách là một ngọn lửa, thắp sáng tri thức và ước mơ."</p>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
-    
+
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
       <div class="container">
         <p>© 2025-2026 Tạp Chí Đọc | Golden River. Made with <span class="heart">❤️</span> by Editorial Team</p>
       </div>
     </footer>
-    
+
   </main>
-  
+
   <!-- JavaScript -->
   <script src="js/main.js"></script>
-  <script src="js/interactive.js"></script>
-  
+
 </body>
 </html>

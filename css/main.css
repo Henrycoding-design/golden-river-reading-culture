@@ -142,6 +142,7 @@ section {
 
 .btn-primary:hover {
   background-color: #B45309;
+  color:#FEF3C7;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   text-decoration: none;

@@ -1,47 +1,60 @@
-# 🌊 Golden River Reading Culture
+# 🌊 Golden River Reading Culture (2025-2026)
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![PDF.js](https://img.shields.io/badge/PDF.js-FF0000?style=for-the-badge&logo=adobe&logoColor=white)
 
-A modern, interactive website dedicated to fostering a vibrant reading culture. Golden River provides a platform for book reviews, creative writing, reading activities, and community engagement.
+**"Illuminating the Written Page"** - An interactive digital magazine from Golden River, spreading reading culture and nurturing a love for literature within the Vinser community.
 
-## 📱 Image
-![Preview img](assets/preview.png)
-![Preview img](assets/preview2.png)
+## 📱 Preview
+
+![Preview](assets/preview.png)
+![Preview 2](assets/preview2.png)
 
 ## ✨ Features
 
-- 📚 **Book Reviews** - Discover curated book reviews in both article and video formats
-- ✍️ **Creative Corner** - Share your stories, poetry, and comics with the community
-- 🎉 **Reading Activities** - Participate in reading events and cultural activities
-- 🎨 **Modern UI/UX** - Clean, responsive design with smooth animations and interactive components
-- 🌓 **Theme Support** - Light and dark mode for comfortable reading
-- 📱 **Fully Responsive** - Optimized for desktop, tablet, and mobile devices
+- 📖 **PDF Flip Book** - Interactive magazine reading experience with natural page-flip effects
+- 🎨 **Modern UI/UX** - Elegant, modern interface with gold and teal color scheme
+- 🌓 **Dark/Light Mode** - Toggle between dark and light interface themes
+- 📱 **Fully Responsive** - Optimized for all devices: desktop, tablet, and mobile
+- ⚡ **Performance Optimized** - Windowed page loading to conserve memory
+- 🎯 **Smooth Animations** - Fluid transitions and premium user experience
+- ♿ **Accessible** - Keyboard navigation support and semantic HTML
 
 ## 🛠️ Technologies Used
 
 - **HTML5** - Semantic markup and structure
 - **CSS3** - Modern styling with CSS variables, flexbox, and grid
 - **JavaScript (Vanilla)** - Interactive features and DOM manipulation
+- **PDF.js 3.11.174** - PDF page rendering
+- **StPageFlip 2.0.7** - Flip book page-turn effects
 - **Responsive Design** - Mobile-first approach
 
 ## 📁 Project Structure
 
 ```
 golden-river-reading-culture/
-├── index.html            # Homepage & Introduction
-├── activities.html       # Reading Activities & Events
-├── reviews.html          # Book Reviews: Articles & Videos
-├── creative.html         # Creative Corner: Stories, Poetry, Comics
-├── credits.html          # Editorial Board & Acknowledgments
+├── index.html              # Homepage - Introduction and main content
+├── view.html               # Magazine Reader - PDF Flip Book
+├── credits.html            # Team Page - Editorial board and credits
 ├── css/
-│   ├── main.css          # Shared styles, fonts, layout, variables
-│   ├── navbar.css        # Shared header & navigation bar
-│   └── components.css    # Cards, modals, lightboxes
-└── js/
-    ├── interactive.js    # Tabs, Modals, Carousel
-    └── main.js           # Shared layout scripts: active link, mobile menu, theme
+│   ├── main.css            # Global styles, CSS variables, typography
+│   ├── navbar.css          # Navigation bar and mobile menu
+│   └── components.css      # Components: hero, gallery, team grid, footer
+├── js/
+│   └── main.js             # Scripts: theme toggle, mobile menu, animations
+├── assets/
+│   ├── preview.png         # Homepage preview image
+│   ├── preview2.png        # Team page preview image
+│   └── test.pdf            # Original magazine PDF file
+├── test/                   # Test files (not used in production)
+│   ├── test.html
+│   ├── test2.html
+│   └── test3.html
+├── README.md               # Project documentation
+├── NOTE.md                 # Internal notes
+└── todo.md                 # Todo list (legacy)
 ```
 
 ## 🚀 Getting Started
@@ -65,39 +78,66 @@ golden-river-reading-culture/
 
 3. Open `index.html` in your web browser:
    ```bash
-   # On Windows
+   # Windows
    start index.html
    
-   # On macOS
+   # macOS
    open index.html
    
-   # On Linux
+   # Linux
    xdg-open index.html
    ```
 
 ## 📖 Usage
 
-Simply open the website in your browser and navigate through the different sections:
+### Homepage (index.html)
+- View magazine introduction and the theme "Illuminating the Written Page"
+- Explore the latest activities and updates
+- Read the editorial letter from the editorial board
+- Quick access to the PDF magazine
 
-- **Home** - Learn about Golden River's mission and vision
-- **Activities** - Explore upcoming reading events and activities
-- **Reviews** - Read and watch book reviews
-- **Creative** - Discover community-created content
-- **Credits** - Meet the editorial team
+### Magazine Reader (view.html)
+- Open the magazine in interactive flip book format
+- Flip pages with smooth 3D effects
+- Navigate using mouse or arrow keys
+- Automatically switches between 1-page and 2-page layout based on screen size
 
-## 🎨 Key Features Breakdown
+### Team Page (credits.html)
+- View editorial board information
+- Special thanks to supporting organizations
+- Detailed publication information
 
-### Interactive Components
-- **Tabs** - Switch between content categories seamlessly
-- **Modals** - Detailed views without leaving the page
-- **Carousel** - Dynamic content showcases
-- **Lightbox** - Enhanced image viewing experience
+## 🎨 Design System
 
-### Design System
-- **CSS Variables** - Consistent theming and easy customization
-- **Modular CSS** - Organized stylesheets for maintainability
-- **Smooth Animations** - Polished user experience with transitions
-- **Accessibility** - Semantic HTML and keyboard navigation support
+### Color Palette
+- **Gold** (`#D97706`) - Primary color, representing warmth and knowledge
+- **Teal** (`#0D9488`) - Secondary color, creating balance and modernity
+- **Purple** (`#7C3AED`) - Accent color, adding depth to the design
+
+### Typography
+- **Serif**: Playfair Display - For headings, creating an elegant feel
+- **Sans-serif**: Plus Jakarta Sans - For body text, ensuring readability
+
+### Components
+- **Hero Section** - Homepage with gradient and magazine cover card
+- **Gallery Grid** - Responsive grid for updates and activities
+- **Team Grid** - Display team members with avatars and information
+- **Quote Callout** - Specially styled blockquote
+- **Page Hero** - Header for sub-pages with gradient background
+
+## 🔧 Technical Details
+
+### PDF Flip Book Implementation
+- **Windowed Loading**: Only renders ±10 pages around the current page
+- **Memory Efficient**: Automatically unloads distant pages to save RAM
+- **Mobile Optimized**: Automatically switches between 1-page and 2-page view
+- **Keyboard Navigation**: Supports left/right arrow keys for page flipping
+
+### Performance Features
+- Lazy loading for PDF pages
+- WebP format for images
+- Optimized CSS transitions and animations
+- Minimal JavaScript footprint
 
 ## 🤝 Contributing
 
@@ -117,4 +157,6 @@ This project and its contents are protected by copyright. All rights reserved.
 
 ---
 
-**Golden River Reading Culture** - Cultivating a community of passionate readers, one page at a time. 📖🌊
+**Golden River Reading Culture** - Illuminating the Written Page 📖🌊
+
+*Made with ❤️ by Editorial Team - 2025-2026*

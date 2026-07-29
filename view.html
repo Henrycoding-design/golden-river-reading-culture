@@ -1,0 +1,273 @@
+<!--
+ This is the main PDF flip approach test. Using StPageFlip, a modern, and actively maintained lib.
+ Compatible with modern websites
+ This file also have windowed loading pages (+-10), reducing memory, more compatible with mobile
+ also integrated with dynamic usePortrait param to enhance readability on both small and big screens
+ by switching between one-page and two-page display
+  -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF FlipBook | Golden River - Thắp Sáng Trang Văn</title>
+
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<!-- StPageFlip -->
+<!--
+ StPageFlip v2.0.7
+ Pinned version for project stability.
+ Tested with PDF.js 3.11.174.
+-->
+ <!--
+ Dependencies pinned:
+ - PDF.js 3.11.174
+ - StPageFlip 2.0.7
+
+ Do not upgrade without regression testing.
+-->
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:
+        radial-gradient(circle at top left, rgba(217,119,6,0.2), transparent 32vw),
+        radial-gradient(circle at bottom right, rgba(13,148,136,0.18), transparent 34vw),
+        #2f2f2f;
+    margin: 0;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+    font-family:"Plus Jakarta Sans", Arial, sans-serif
+}
+
+#book{
+    width:95vw;
+    height:95vh;
+    display:none;
+}
+
+#loading{
+    color:white;
+    position:absolute;
+    font-size:22px;
+    letter-spacing:0.02em;
+}
+
+.page{
+    background:white;
+    overflow:hidden;
+}
+
+canvas{
+    display:block;
+    width:100%;
+    height:100%;
+}
+</style>
+
+</head>
+<body>
+
+<div id="loading">Loading magazine...</div>
+
+<div id="book"></div>
+
+<script>
+
+const pdfUrl = "assets/test.pdf";
+const RENDER_SCALE = 1.5; // Render resolution for PDF.js
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+async function loadBook(){
+
+    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+
+    const container = document.getElementById("book");
+
+    // Get the viewport size
+    const firstPage = await pdf.getPage(1);
+    const firstViewport = firstPage.getViewport({ scale: 1}); // Logical page size for StPageFlip (independent of render quality)
+
+    const pageWidth = firstViewport.width;
+    const pageHeight = firstViewport.height;
+
+    const wrappers = [];
+    const rendered = new Set();
+
+    //load wrappers first
+    for (let i = 1; i <= pdf.numPages; i++) {
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "page";
+
+        wrapper.dataset.page = i;
+
+        container.appendChild(wrapper);
+        wrappers.push(wrapper);
+    }
+
+    async function renderPage(pageNumber) {
+        if (rendered.has(pageNumber))
+            return;
+
+        const wrapper = wrappers[pageNumber - 1];
+        const page = await pdf.getPage(pageNumber);
+        const viewport = page.getViewport({ scale: RENDER_SCALE });
+
+        // Create a temporary, off-screen canvas to render the PDF page
+        const canvas = document.createElement("canvas");
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({
+            canvasContext: canvas.getContext("2d"),
+            viewport
+        }).promise;
+
+        // Convert the rendered canvas into an image string
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL("image/webp", 0.8); // Using webp for better mobile performance
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.display = "block";
+
+        // Put the safe, cloneable image inside the wrapper instead of the canvas
+        wrapper.replaceChildren(img);
+
+        rendered.add(pageNumber);
+    }
+
+    function unloadPage(pageNumber) {
+        if (!rendered.has(pageNumber))
+            return;
+
+        wrappers[pageNumber - 1].replaceChildren();
+
+        rendered.delete(pageNumber);
+    }
+
+    const WINDOW = 10;
+
+    async function updateWindow(current) {
+
+        const start = Math.max(1, current - WINDOW);
+        const end = Math.min(pdf.numPages, current + WINDOW);
+
+        // Render nearby pages
+        for (let i = start; i <= end; i++) {
+            renderPage(i);
+        }
+
+        // Remove distant pages
+        for (const page of [...rendered]) {
+
+            if (page < start || page > end)
+                unloadPage(page);
+
+        }
+    }
+
+    document.getElementById("loading").style.display="none";
+    container.style.display="block";
+
+    const mobile = window.innerWidth < 768;
+
+    const widthScale = mobile ? 0.5 : 0.75;
+    const heightScale = mobile ? 0.5 : 0.65;
+
+    const pageFlip = new St.PageFlip(container, {
+        width: pageWidth * widthScale,
+        height: pageHeight * heightScale,
+
+        // size: "stretch",
+        // autoSize: true,
+        // Don't use size: "stretch".
+        // It breaks usePortrait in this version of StPageFlip.
+
+        usePortrait: true,
+
+        showCover: true,
+        drawShadow: true,
+        maxShadowOpacity: 0.5,
+
+        mobileScrollSupport: true,
+        useMouseEvents: true,
+
+        flippingTime: 700,
+        startPage: 0
+    });
+
+    pageFlip.loadFromHTML(wrappers);
+
+    await new Promise(requestAnimationFrame);
+
+    // start rendering
+    await updateWindow(1);
+
+    // update loading pages/unloading pages on flip
+    pageFlip.on("flip", e => {
+
+        updateWindow(e.data + 1);
+
+    });
+
+    pageFlip.on("changeOrientation", e => {
+        console.log(
+            e.data,
+            window.innerWidth,
+            window.innerHeight,
+            container.clientWidth,
+            container.clientHeight
+        );
+    });
+
+    window.addEventListener("resize", () => { // always working
+        console.log("resize", window.innerWidth, window.innerHeight);
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown",(e)=>{
+
+        if(e.key==="ArrowRight"){
+            pageFlip.flipNext();
+        }
+
+        if(e.key==="ArrowLeft"){
+            pageFlip.flipPrev();
+        }
+
+    });
+
+    // Window resize
+    window.addEventListener("resize", () => {
+        pageFlip.updateOrientation();
+
+        console.log(
+            pageFlip.getOrientation(),
+            pageFlip.getBoundsRect()
+        );
+    });
+
+}
+
+loadBook();
+
+</script>
+
+</body>
+</html>

@@ -29,6 +29,15 @@
   align-items: center;
   justify-content: space-between;
   max-width: 1400px;
+  gap: 2rem;
+}
+
+/* Navbar Actions Group (nav links + theme toggle) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
 }
 
 /* Brand/Logo */
@@ -61,7 +70,7 @@
 .navbar-nav {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
@@ -108,31 +117,44 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.6rem;
   border-radius: var(--radius-md);
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-gold-light) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
 }
 
 .theme-toggle:hover {
-  background-color: var(--accent-gold-light);
+  transform: rotate(10deg) scale(1.1);
 }
 
 [data-theme="dark"] .theme-toggle:hover {
-  background-color: var(--accent-gold-light);
+  transform: rotate(10deg) scale(1.1);
 }
 
 .theme-toggle .theme-icon {
   display: inline-block;
   transition: var(--transition);
-}
-
-.theme-toggle:hover .theme-icon {
-  transform: rotate(15deg);
+  position: relative;
+  z-index: 1;
 }
 
 .mobile-theme-toggle {
@@ -240,11 +262,7 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .navbar > .container > .navbar-nav {
-    display: none;
-  }
-
-  .navbar > .container > .theme-toggle {
+  .navbar > .container > .navbar-actions {
     display: none;
   }
 
