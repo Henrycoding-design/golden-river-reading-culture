@@ -6,6 +6,8 @@
   <meta name="description" content="Tạp Chí Đọc (2025-2026) - Golden River: Thắp Sáng Trang Văn">
   <title>Tạp Chí Đọc | Golden River - Thắp Sáng Trang Văn</title>
 
+  <link rel="icon" href="./assets/logo.png" type="image/png">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,15 +24,15 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">
-        <span class="logo-icon"><img src="https://inviva.vn/wp-content/uploads/2026/04/logo-vinschool-vector-02.png" alt="Vinschool"></span>
+        <span class="logo-icon"><img src="./assets/logo-vinschool.png" alt="Vinschool"></span>
         <span class="brand-text">TẠP CHÍ ĐỌC | Golden River</span>
-        <span class="brand-short">TCD | GR</span>
+        <span class="brand-short">TCD | VGR</span>
       </a>
 
       <div class="navbar-actions">
         <ul class="navbar-nav">
           <li><a href="index.html">Trang Chủ</a></li>
-          <li><a href="view.html" target="_blank" rel="noopener">Đọc Tạp Chí</a></li>
+          <li><a href="magazine.html">Tạp Chí</a></li>
           <li><a href="credits.html">Đội Ngũ</a></li>
         </ul>
 
@@ -51,7 +53,7 @@
   <div class="mobile-drawer">
     <ul class="navbar-nav">
       <li><a href="index.html">Trang Chủ</a></li>
-      <li><a href="view.html" target="_blank" rel="noopener">Đọc Tạp Chí</a></li>
+      <li><a href="magazine.html">Tạp Chí</a></li>
       <li><a href="credits.html">Đội Ngũ</a></li>
     </ul>
 
@@ -68,18 +70,18 @@
   <main>
 
     <!-- ========== HERO SECTION ========== -->
-    <section class="hero">
+    <section class="hero" data-animate>
       <div class="container">
         <div class="hero-content">
           <h1>Tạp Chí Đọc (2025-2026)</h1>
-          <p class="hero-subtitle">"Thắp Sáng Trang Văn" - Golden River</p>
+          <p class="hero-subtitle">Vinschool Golden River</p>
 
           <!-- Magazine Cover Card -->
           <div class="magazine-cover-card">
             <div class="cover-placeholder">
-              <span>📖</span>
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=800&fit=crop" alt="Ấn phẩm tạp chí đọc">
             </div>
-            <h3>Ấn Phẩm Đặc Biệt</h3>
+            <h3 style="white-space: nowrap;">"Thắp Sáng Trang Văn"</h3>
             <p>
               Mùa đọc 2025-2026<br>
               Khám phá thế giới qua từng trang sách
@@ -87,57 +89,69 @@
           </div>
 
           <div class="hero-actions">
-            <a href="view.html" class="btn btn-primary" target="_blank" rel="noopener">Đọc Tạp Chí</a>
-            <a href="#editorial" class="btn btn-secondary">Đọc Lời Nói Đầu</a>
+            <a href="view.html?pdf=assets/test.pdf" class="btn btn-primary">Đọc Ngay!</a>
+            <a href="magazine.html" class="btn btn-secondary">Xem Thêm</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ========== LATEST ACTIVITIES / UPDATES ========== -->
-    <section class="updates-section">
+    <section class="updates-section" data-animate>
       <div class="container">
         <div class="section-header">
-          <h2>Hoạt Động & Cập Nhật Mới</h2>
-          <p>Theo dõi những điểm nhấn mới nhất của Tạp Chí Đọc và hành trình lan tỏa văn hóa đọc tại Golden River.</p>
+          <h2>Hoạt Động & Cập Nhật</h2>
+          <p>Khám phá những nội dung mới nhất từ Tạp Chí Đọc</p>
         </div>
 
         <div class="gallery-grid updates-grid">
-          <a class="gallery-item update-card" href="view.html" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" alt="Ấn phẩm tạp chí đọc">
-            <div class="gallery-overlay">
-              <span class="update-label">Mới phát hành</span>
+          <!-- Item 1 -->
+          <div class="update-card" onclick="window.open('view.html', '_blank', 'noopener')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" alt="Ấn phẩm tạp chí đọc">
+              <span class="update-badge">Mới phát hành</span>
+            </div>
+            <div class="update-content">
               <h3>Đọc tạp chí dạng Flip Book</h3>
               <p>Mở bản PDF tương tác của ấn phẩm "Thắp Sáng Trang Văn".</p>
             </div>
-          </a>
+          </div>
 
-          <a class="gallery-item update-card" href="#editorial">
-            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" alt="Lời nói đầu tạp chí">
-            <div class="gallery-overlay">
-              <span class="update-label">Từ ban biên tập</span>
+          <!-- Item 2 -->
+          <div class="update-card" onclick="window.open('#editorial', '_self')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" alt="Lời nói đầu tạp chí">
+              <span class="update-badge">Từ ban biên tập</span>
+            </div>
+            <div class="update-content">
               <h3>Lời Nói Đầu</h3>
               <p>Khởi đầu mùa đọc mới bằng thông điệp "Thắp Sáng Trang Văn".</p>
             </div>
-          </a>
+          </div>
 
-          <a class="gallery-item update-card" href="credits.html">
-            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&h=675&fit=crop" alt="Đội ngũ biên tập">
-            <div class="gallery-overlay">
-              <span class="update-label">Đội ngũ</span>
+          <!-- Item 3 -->
+          <div class="update-card" onclick="window.open('credits.html', '_self')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&h=675&fit=crop" alt="Đội ngũ biên tập">
+              <span class="update-badge">Đội ngũ</span>
+            </div>
+            <div class="update-content">
               <h3>Gặp gỡ ban biên tập</h3>
               <p>Những thành viên góp sức để hoàn thiện tạp chí mùa 2025-2026.</p>
             </div>
-          </a>
+          </div>
 
-          <a class="gallery-item update-card" href="./assets/test.pdf" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=900&h=675&fit=crop" alt="Tải bản PDF tạp chí">
-            <div class="gallery-overlay">
-              <span class="update-label">PDF</span>
+          <!-- Item 4 -->
+          <div class="update-card" onclick="window.open('./assets/test.pdf', '_blank', 'noopener')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=900&h=675&fit=crop" alt="Tải bản PDF tạp chí">
+              <span class="update-badge">PDF</span>
+            </div>
+            <div class="update-content">
               <h3>Mở file gốc</h3>
               <p>Truy cập trực tiếp bản PDF nếu trình duyệt của bạn cần chế độ đọc đơn giản.</p>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>

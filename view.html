@@ -87,7 +87,9 @@ canvas{
 
 <script>
 
-const pdfUrl = "assets/test.pdf";
+// Get PDF URL from URL parameters, fallback to default
+const urlParams = new URLSearchParams(window.location.search);
+const pdfUrl = urlParams.get('pdf') || "assets/test.pdf";
 const RENDER_SCALE = 1.5; // Render resolution for PDF.js
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =

@@ -225,7 +225,7 @@ img {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -233,8 +233,14 @@ img {
   }
 }
 
-.fade-in {
-  animation: fadeIn 0.6s ease-out;
+/* Only applies the animation on screens 768px wide or larger */
+@media (min-width: 768px) {
+  .fade-in {
+    animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 /* Responsive */

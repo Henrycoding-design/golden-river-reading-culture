@@ -53,8 +53,7 @@ golden-river-reading-culture/
 │   ├── test2.html
 │   └── test3.html
 ├── README.md               # Project documentation
-├── NOTE.md                 # Internal notes
-└── todo.md                 # Todo list (legacy)
+└── NOTE.md                 # Internal notes
 ```
 
 ## 🚀 Getting Started

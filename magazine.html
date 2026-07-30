@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thư Viện Tạp Chí - Golden River: Thắp Sáng Trang Văn">
+  <title>Thư Viện Tạp Chí | Golden River - Thắp Sáng Trang Văn</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/magazine.css">
+</head>
+<body data-theme="light">
+
+  <!-- ========== NAVIGATION BAR ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="logo-icon"><img src="https://inviva.vn/wp-content/uploads/2026/04/logo-vinschool-vector-02.png" alt="Vinschool"></span>
+        <span class="brand-text">TẠP CHÍ ĐỌC | Golden River</span>
+        <span class="brand-short">TCD | GR</span>
+      </a>
+
+      <div class="navbar-actions">
+        <ul class="navbar-nav">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="magazine.html">Tạp Chí</a></li>
+          <li><a href="credits.html">Đội Ngũ</a></li>
+        </ul>
+
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <ul class="navbar-nav">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="magazine.html">Tạp Chí</a></li>
+      <li><a href="credits.html">Đội Ngũ</a></li>
+    </ul>
+
+    <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-label">Đổi giao diện</span>
+      <span class="theme-icon">🌙</span>
+    </button>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay"></div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero magazine-hero" data-animate>
+      <div class="container">
+        <div class="section-header">
+          <h1>Thư Viện Tạp Chí</h1>
+          <p>Khám phá bộ sưu tập tạp chí Golden River - Nơi mỗi trang sách là một ánh sáng</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MAGAZINE GALLERY ========== -->
+    <section class="magazine-gallery-section" data-animate>
+      <div class="container">
+        <div class="section-header">
+          <h2>Bộ Sưu Tập Tạp Chí</h2>
+          <p>Chọn một ấn phẩm để bắt đầu hành trình đọc. <br> Mỗi tạp chí là một thế giới riêng đang chờ bạn khám phá.</p>
+        </div>
+
+        <div class="magazine-gallery">
+          <!-- Magazine 1 -->
+          <div onclick="window.open('view.html?pdf=assets/test.pdf', '_blank', 'noopener')" class="magazine-card">
+            <div class="magazine-cover">
+              <div class="cover-image">
+                <span class="magazine-badge">Mới Phát Hành</span>
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=800&fit=crop" alt="Tạp Chí Đọc 2025-2026">
+              </div>
+              <div class="magazine-info">
+                <h3>Tạp Chí Đọc 2025-2026</h3>
+                <p class="magazine-theme">"Thắp Sáng Trang Văn"</p>
+                <p class="magazine-description">Ấn phẩm đầu tiên với những câu chuyện, bài thơ và cảm nhận sách từ các Vinser</p>
+                <div class="magazine-meta">
+                  <span class="meta-item">📄 24 trang</span>
+                  <span class="meta-item">📅 2025-2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Magazine 2 -->
+          <div onclick="window.open('view.html?pdf=assets/test.pdf', '_blank', 'noopener')" class="magazine-card">
+            <div class="magazine-cover">
+              <div class="cover-image">
+                <span class="magazine-badge">Sắp Ra Mắt</span>
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=800&fit=crop" alt="Tạp Chí Đọc - Mùa 2">
+              </div>
+              <div class="magazine-info">
+                <h3>Tạp Chí Đọc - Mùa 2</h3>
+                <p class="magazine-theme">"Hành Trình Của Những Trang Văn"</p>
+                <p class="magazine-description">Tiếp nối hành trình khám phá văn chương với những tác phẩm mới mẻ và sâu sắc</p>
+                <div class="magazine-meta">
+                  <span class="meta-item">📄 28 trang</span>
+                  <span class="meta-item">📅 2026-2027</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Magazine 3 -->
+          <div onclick="window.open('view.html?pdf=assets/test.pdf', '_blank', 'noopener')" class="magazine-card">
+            <div class="magazine-cover">
+              <div class="cover-image">
+                <span class="magazine-badge">Đặc Biệt</span>
+                <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600&h=800&fit=crop" alt="Tạp Chí Thơ">
+              </div>
+              <div class="magazine-info">
+                <h3>Tạp Chí Thơ</h3>
+                <p class="magazine-theme">"Vần Thơ Trong Em"</p>
+                <p class="magazine-description">Tuyển tập những bài thơ hay nhất được sáng tác bởi các bạn học sinh Vinschool</p>
+                <div class="magazine-meta">
+                  <span class="meta-item">📄 16 trang</span>
+                  <span class="meta-item">📅 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Magazine 4 -->
+          <div onclick="window.open('view.html?pdf=assets/test.pdf', '_blank', 'noopener')" class="magazine-card">
+            <div class="magazine-cover">
+              <div class="cover-image">
+                <span class="magazine-badge">Đặc Biệt</span>
+                <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600&h=800&fit=crop" alt="Tạp Chí Thơ">
+              </div>
+              <div class="magazine-info">
+                <h3>Tạp Chí Thơ</h3>
+                <p class="magazine-theme">"Vần Thơ Trong Em"</p>
+                <p class="magazine-description">Tuyển tập những bài thơ hay nhất được sáng tác bởi các bạn học sinh Vinschool</p>
+                <div class="magazine-meta">
+                  <span class="meta-item">📄 16 trang</span>
+                  <span class="meta-item">📅 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== HOW TO READ & THANK YOU SECTION ========== -->
+    <!-- <section class="magazine-experience-section"> -->
+      <div class="container" data-animate>
+        
+        <!-- PHASE 1: The Instructions (Hãy...)
+        <div class="section-header">
+          <h2>3 Bước Để Bắt Đầu Hành Trình Đọc</h2>
+          <p>Trải nghiệm không gian đọc tương tác chỉ với vài thao tác đơn giản:</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Chọn Ấn Phẩm</h3>
+            <p>Tìm và click chọn cuốn tạp chí bạn muốn thưởng thức từ bộ sưu tập ở phía trên.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Mở Trình Đọc</h3>
+            <p>Hệ thống sẽ tự động mở một tab mới với giao diện sách điện tử trực quan.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Lật Trang & Thưởng Thức</h3>
+            <p>Sử dụng chuột kéo góc trang hoặc phím mũi tên để lật sách và bắt đầu đọc nội dung.</p>
+          </div>
+        </div> -->
+
+        <!-- Divider Line to visually separate instructions from the emotional closer -->
+        <hr class="section-divider">
+
+        <!-- PHASE 2: The Final Thank You Header -->
+        <div class="thank-you-footer-header">
+          <h2>Cảm Ơn & Chúc Bạn Một Hành Trình Ý Nghĩa</h2>
+          <p>Mong mỗi trang sách tại Golden River sẽ thắp sáng niềm đam mê văn chương trong bạn.</p>          
+          <div class="thank-you-signature">✨ 📖 ✨</div>
+        </div>
+
+      </div>
+    <!-- </section> -->
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div class="container">
+        <p>© 2025-2026 Tạp Chí Đọc | Golden River. Made with <span class="heart">❤️</span> by Editorial Team</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

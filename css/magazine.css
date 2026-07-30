@@ -1,0 +1,332 @@
+/* ============================================
+   MAGAZINE GALLERY STYLES
+   Portrait-oriented magazine cards
+   ============================================ */
+
+/* ========== MAGAZINE HERO ========== */
+.magazine-hero {
+  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-gold) 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.magazine-hero .section-header {
+  color: white;
+}
+
+.magazine-hero h1 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.magazine-hero p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ========== MAGAZINE GALLERY SECTION ========== */
+.magazine-gallery-section {
+  background-color: var(--bg-primary);
+  padding: 3rem 0; /* Giảm nhẹ padding section từ 4rem xuống 3rem */
+}
+
+.magazine-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* Thu nhỏ nhẹ chiều rộng min */
+  gap: 1.75rem; /* Giảm gap từ 2.5rem xuống 1.75rem cho khít hơn */
+  margin-top: 1.5rem;
+  justify-content: center; /* Giúp căn giữa nếu hàng cuối không đủ item */
+}
+
+/* ========== MAGAZINE CARD ========== */
+.magazine-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.magazine-card:hover {
+  transform: translateY(-5px); /* Giảm độ nẩy khi hover từ 8px xuống 5px cho mượt */
+}
+
+.magazine-cover {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.magazine-card:hover .magazine-cover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tỷ lệ ảnh bìa dọc tinh chỉnh nhẹ */
+.cover-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4; 
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+}
+
+.cover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.magazine-card:hover .cover-image img {
+  transform: scale(1.05);
+}
+
+/* Tinh gọn badge */
+.magazine-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--accent-gold);
+  color: white;
+  padding: 0.4rem 0.75rem; /* Thu nhỏ padding nhẹ */
+  border-radius: var(--radius-md);
+  font-size: 0.7rem; /* Giảm size chữ badge */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+}
+
+/* Thu hẹp không gian khu vực nội dung chữ */
+.magazine-info {
+  padding: 1.25rem; /* Giảm padding từ 1.5rem xuống 1.25rem */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.magazine-info h3 {
+  color: var(--accent-gold);
+  font-size: 1.15rem; /* Giảm font-size từ 1.25rem xuống 1.15rem */
+  font-weight: 700;
+  margin-bottom: 0.35rem; /* Thu hẹp margin dưới */
+  line-height: 1.3;
+}
+
+.magazine-theme {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem; /* Thu hẹp margin dưới */
+  font-family: var(--font-serif);
+}
+
+/* TUYỆT CHIÊU CẮT NGẮN CHỮ: Khống chế text tối đa 2 dòng */
+.magazine-description {
+  color: var(--text-secondary);
+  font-size: 0.85rem; /* Thu nhỏ font một chút */
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+  
+  /* Tạo dấu ba chấm khi mô tả vượt quá 2 dòng */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tinh gọn phần Meta dưới đáy card */
+.magazine-meta {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.75rem; /* Thu hẹp khoảng cách đường line */
+  border-top: 1px solid var(--bg-primary);
+  font-size: 0.8rem; /* Hạ nhỏ size thông số */
+  color: var(--text-secondary);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ========== MAGAZINE EXPERIENCE & THANK YOU SECTION ========== */
+.magazine-experience-section {
+  background-color: var(--bg-card);
+  padding: 4rem 0;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-lg);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-teal) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.step-card h3 {
+  color: var(--accent-gold);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Elegant Divider Line */
+.section-divider {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+  margin: 4rem auto;
+  max-width: 60%;
+  opacity: 0.4;
+}
+
+/* Final Thank You Header */
+.thank-you-footer-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.thank-you-footer-header h2 {
+  color: var(--accent-gold);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.thank-you-footer-header p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.thank-you-signature {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  letter-spacing: 0.4rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .magazine-hero {
+    padding: 5rem 0 3rem;
+    min-height: 250px;
+  }
+
+  .magazine-hero h1 {
+    font-size: 2rem;
+  }
+
+  .magazine-hero p {
+    font-size: 1rem;
+  }
+
+  .magazine-info {
+    padding: 1.25rem;
+  }
+
+  .magazine-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .magazine-description {
+    font-size: 0.85rem;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Reduce image height on mobile for faster content visibility */
+  .cover-image {
+    aspect-ratio: 4/3;
+  }
+}
+
+@media (max-width: 480px) {
+  .magazine-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .magazine-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.magazine-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.magazine-card:nth-child(1) { animation-delay: 0.1s; }
+.magazine-card:nth-child(2) { animation-delay: 0.2s; }
+.magazine-card:nth-child(3) { animation-delay: 0.3s; }
+.magazine-card:nth-child(4) { animation-delay: 0.4s; }
+.magazine-card:nth-child(5) { animation-delay: 0.5s; }
+.magazine-card:nth-child(6) { animation-delay: 0.6s; }

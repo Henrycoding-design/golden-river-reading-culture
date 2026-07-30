@@ -106,7 +106,10 @@
 }
 
 .cover-placeholder {
-  aspect-ratio: 3/4;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4; 
+  overflow: hidden;
   background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
   border-radius: var(--radius-lg);
   display: flex;
@@ -148,149 +151,110 @@
 /* ========== LATEST ACTIVITIES / UPDATES ========== */
 .updates-section {
   background-color: var(--bg-primary);
+  padding: 4rem 0;
 }
 
-.gallery-grid {
+/* Biến đổi từ 2 cột sang 4 cột trên desktop để item nhỏ lại */
+.gallery-grid.updates-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
-.updates-grid {
-  align-items: stretch;
-}
-
-.gallery-item {
-  position: relative;
+/* Card tổng thể tinh tế, nền trong suốt/card nhẹ */
+.update-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
-  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.update-card:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  color: white;
-  text-decoration: none;
+  color: inherit;
 }
 
-.gallery-item:hover,
-.gallery-item:focus-visible {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-xl);
-  color: white;
-  text-decoration: none;
+/* Khu vực ảnh được ép tỷ lệ Cinematic phẳng hơn (16:10 thay vì 4:3) */
+.update-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background-color: #eee;
 }
 
-.gallery-item img {
+.update-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img,
-.gallery-item:focus-visible img {
-  transform: scale(1.1);
+.update-card:hover .update-image-wrapper img {
+  transform: scale(1.05);
 }
 
-.gallery-overlay {
+/* Badge tinh gọn nằm gọn trên góc ảnh, luôn hiển thị */
+.update-badge {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, 
-    rgba(0,0,0,0.95) 0%, 
-    rgba(0,0,0,0.75) 50%, 
-    rgba(0,0,0,0.3) 75%,
-    transparent 100%);
-  padding: 2.5rem 1.75rem 1.75rem;
-  color: white;
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(26, 26, 26, 0.75);
+  color: var(--accent-gold-light);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  border-left: 2px solid var(--accent-gold);
+}
+
+/* Phần nội dung chữ thoáng đãng bên dưới ảnh */
+.update-content {
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 100%;
+  flex-grow: 1;
 }
 
-.gallery-item:hover .gallery-overlay,
-.gallery-item:focus-visible .gallery-overlay {
-  transform: translateY(0);
-}
-
-.gallery-overlay::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-teal) 100%);
-  transform: scaleX(0);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gallery-item:hover .gallery-overlay::before,
-.gallery-item:focus-visible .gallery-overlay::before {
-  transform: scaleX(1);
-}
-
-.gallery-overlay h3 {
-  color: white;
-  margin-bottom: 0.75rem;
-  font-size: 1.35rem;
+.update-content h3 {
+  font-size: 1.05rem;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  transform: translateY(10px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+  transition: color 0.2s ease;
 }
 
-.gallery-item:hover .gallery-overlay h3,
-.gallery-item:focus-visible .gallery-overlay h3 {
-  transform: translateY(0);
-  opacity: 1;
+/* Đổi màu tiêu đề nhẹ khi hover tạo điểm nhấn định hướng */
+.update-card:hover h3 {
+  color: var(--accent-gold);
 }
 
-.gallery-overlay p {
-  color: rgba(255,255,255,0.92);
-  font-size: 0.95rem;
-  line-height: 1.6;
+.update-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
   margin: 0;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  transform: translateY(10px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 
-.gallery-item:hover .gallery-overlay p,
-.gallery-item:focus-visible .gallery-overlay p {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.update-label {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  color: var(--accent-gold-light);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.75rem;
-  background: rgba(217, 119, 6, 0.2);
-  border-left: 3px solid var(--accent-gold);
-  backdrop-filter: blur(10px);
-  transform: translateY(10px);
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  align-self: flex-start;
-}
-
-.gallery-item:hover .update-label,
-.gallery-item:focus-visible .update-label {
-  transform: translateY(0);
-  opacity: 1;
+/* Responsive mượt mà cho các thiết bị di động */
+@media (max-width: 600px) {
+  .gallery-grid.updates-grid {
+    grid-template-columns: 1fr; /* 1 cột trên điện thoại nhỏ để tránh bóp chữ */
+    gap: 1.25rem;
+  }
 }
 
 /* ========== EDITORIAL LETTER ========== */
