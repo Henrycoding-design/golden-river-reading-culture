@@ -379,42 +379,209 @@
   color: var(--accent-gold);
 }
 
-.colophon {
+/* ========== TEAM QUOTE SECTION ========== */
+.team-quote-section {
+  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--bg-primary) 100%);
+  padding: 5rem 0;
+  margin: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-quote-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+  opacity: 0.05;
+  border-radius: 50%;
+}
+
+.team-quote-section::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-teal) 0%, transparent 70%);
+  opacity: 0.05;
+  border-radius: 50%;
+}
+
+.team-quote {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 4rem 3.5rem;
+  box-shadow: var(--shadow-lg);
+  border-top: 4px solid var(--accent-gold);
+  transition: var(--transition);
 }
 
-.colophon h3 {
-  color: var(--accent-gold);
-  margin-bottom: 1.5rem;
+.team-quote:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
 }
 
-.publication-details {
-  display: grid;
-  gap: 1rem;
-  text-align: left;
-}
+/* Remove or comment out your old .quote-decorative style block */
 
-.publication-details p {
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.publication-details strong {
-  color: var(--text-primary);
-}
-
-.colophon-quote {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--bg-primary);
-}
-
-.colophon-quote p {
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 2rem;
   font-style: italic;
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0 auto 2rem;
+  max-width: 620px;
+  border: none;
+  
+  /* Crucial changes for the wrapping quotes */
+  position: relative;
+  padding: 0 2.5rem; /* Creates space on the sides so quotes don't overlap text */
+}
+
+/* Opening Quote */
+.quote-text::before {
+  content: "“";
+  position: absolute;
+  top: -1rem;
+  left: -0.5rem;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  opacity: 0.3;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Closing Quote (Optional: Remove this block if you only want the top one) */
+.quote-text::after {
+  content: "”";
+  position: absolute;
+  bottom: -3rem;
+  right: 5rem;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  opacity: 0.3;
+  line-height: 1;
+  user-select: none;
+}
+
+.quote-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.quote-divider::before,
+.quote-divider::after {
+  content: '';
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold));
+}
+
+.quote-divider::after {
+  background: linear-gradient(90deg, var(--accent-gold), transparent);
+}
+
+.divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.quote-attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.attribution-line {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.attribution-magazine {
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .team-quote-section {
+    padding: 3rem 0;
+  }
+
+  .team-quote {
+    padding: 3rem 1.5rem;
+  }
+
+  .quote-text {
+    font-size: 1.5rem;
+    margin-bottom: 1.75rem;
+    padding: 0 1.75rem; /* Slightly tighter padding */
+  }
+
+  .quote-text::before,
+  .quote-text::after {
+    font-size: 3.5rem; /* Smaller decorative quotes */
+  }
+  
+  .quote-text::before { top: -0.75rem; left: 0; }
+  .quote-text::after { bottom: -2.5rem; right: 0; }
+
+  .attribution-line {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-quote {
+    padding: 2.5rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .quote-text {
+    font-size: 1.35rem;
+    padding: 0 1.25rem;
+  }
+  
+  .quote-text::before,
+  .quote-text::after {
+    font-size: 3rem;
+  }
+  
+  .quote-text::before { top: -0.5rem; }
+  .quote-text::after { bottom: -2.5rem; }
+
+  .quote-divider::before,
+  .quote-divider::after {
+    width: 36px;
+  }
+
+  .attribution-magazine {
+    font-size: 0.8rem;
+  }
 }
 
 /* ========== SECTION HEADERS ========== */
