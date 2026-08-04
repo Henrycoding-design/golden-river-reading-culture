@@ -5,16 +5,17 @@
 
 /* CSS Variables */
 :root {
-  --bg-primary: #FAFAF9;
+  --bg-primary: #FEFDDF;
   --bg-card: #FFFFFF;
   --text-primary: #1C1917;
   --text-secondary: #78716C;
-  --accent-gold: #D97706;
-  --accent-gold-light: #FEF3C7;
-  --accent-teal: #0D9488;
+  --accent-gold: #E87F24;
+  --accent-gold-light: #FFC81E;
+  --accent-teal: #73A5CA;
   --accent-purple: #7C3AED;
-  --font-serif: 'Playfair Display', 'Lora', serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-small: 'Dongle', sans-serif;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -32,7 +33,7 @@
   --bg-card: #1C1917;
   --text-primary: #FAFAF9;
   --text-secondary: #A8A29E;
-  --accent-gold-light: #451A03;
+  --accent-gold-light: #3D2E00;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
@@ -141,8 +142,8 @@ section {
 }
 
 .btn-primary:hover {
-  background-color: #B45309;
-  color:#FEF3C7;
+  background-color: #B5561D;
+  color: #FEFDDF;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   text-decoration: none;
@@ -206,7 +207,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B45309;
+  background: #B5561D;
 }
 
 /* Selection */
@@ -242,6 +243,13 @@ img {
     -webkit-font-smoothing: antialiased;
   }
 }
+
+@media (min-width: 1024px) {
+  .desktop-nowrap {
+    white-space: nowrap;
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

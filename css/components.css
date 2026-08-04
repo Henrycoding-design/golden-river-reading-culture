@@ -148,6 +148,91 @@
   background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-teal) 100%);
 }
 
+/* ========== VISION / ABOUT SECTION ========== */
+.vision-about-section {
+  background-color: var(--bg-card);
+  padding: 4rem 0;
+}
+
+.vision-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vision-content p {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+/* ========== LOGO CAROUSEL SECTION ========== */
+.logo-carousel-section {
+  background-color: var(--bg-primary);
+  padding: 3rem 0;
+}
+
+.logo-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.logo-item img,
+.logo-item svg {
+  max-height: 60px;
+  width: auto;
+}
+
+/* ========== LATEST MAGAZINES SECTION ========== */
+.latest-magazines-section {
+  background-color: var(--bg-card);
+  padding: 3rem 0;
+}
+
+.gallery-grid.latest-magazines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.latest-magazines-grid .update-image-wrapper {
+  aspect-ratio: 3/1;
+}
+
+.latest-magazines-grid .update-content {
+  padding: 0.75rem 1rem;
+}
+
+.latest-magazines-grid .update-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.latest-magazines-grid .update-content p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 /* ========== LATEST ACTIVITIES / UPDATES ========== */
 .updates-section {
   background-color: var(--bg-primary);
@@ -210,11 +295,12 @@
   left: 0.75rem;
   background: rgba(26, 26, 26, 0.75);
   color: var(--accent-gold-light);
+  /* font-family: var(--font-small); */
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.25rem 0.6rem;
+  padding: 0.3rem 0.7rem;
   border-radius: var(--radius-sm);
   backdrop-filter: blur(4px);
   border-left: 2px solid var(--accent-gold);
@@ -229,7 +315,7 @@
 }
 
 .update-content h3 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 0.5rem 0;
@@ -243,7 +329,7 @@
 }
 
 .update-content p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.5;
   margin: 0;
@@ -285,7 +371,7 @@
 
 .editorial-content p {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
@@ -362,7 +448,7 @@
 
 .team-member .role {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -454,7 +540,7 @@
   content: "“";
   position: absolute;
   top: -1rem;
-  left: -0.5rem;
+  left: 1rem;
   font-family: var(--font-serif);
   font-size: 5rem;
   font-weight: 700;
@@ -469,7 +555,7 @@
   content: "”";
   position: absolute;
   bottom: -3rem;
-  right: 5rem;
+  right: 3rem;
   font-family: var(--font-serif);
   font-size: 5rem;
   font-weight: 700;
@@ -516,14 +602,15 @@
 
 .attribution-line {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-style: italic;
   color: var(--accent-gold);
   font-weight: 600;
 }
 
 .attribution-magazine {
-  font-size: 0.9rem;
+  font-family: var(--font-small);
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
@@ -597,7 +684,7 @@
 
 .section-header p {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -612,6 +699,7 @@
 }
 
 .footer p {
+  /* font-family: var(--font-small); */
   color: var(--text-secondary);
   margin: 0;
 }
@@ -641,6 +729,20 @@
       rgba(0,0,0,0.6) 60%,
       transparent 100%);
     padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .logo-carousel {
+    gap: 1.5rem;
+  }
+
+  .logo-item img,
+  .logo-item svg {
+    max-height: 40px;
+  }
+
+  .vision-content p,
+  .editorial-content p {
+    font-size: 1rem;
   }
 }
 

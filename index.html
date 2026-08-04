@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
@@ -73,24 +73,100 @@
     <section class="hero" data-animate>
       <div class="container">
         <div class="hero-content">
-          <h1>Tạp Chí Đọc (2025-2026)</h1>
+          <h1>Tạp Chí Đọc</h1>
           <p class="hero-subtitle">Vinschool Golden River</p>
 
-          <!-- Magazine Cover Card -->
-          <div class="magazine-cover-card">
-            <div class="cover-placeholder">
-              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=800&fit=crop" alt="Ấn phẩm tạp chí đọc">
+          <div class="hero-actions">
+            <a href="#latest-magazines" class="btn btn-primary">See Latest Editions</a>
+            <a href="magazine.html" class="btn btn-secondary">Explore More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VISION / ABOUT SECTION ========== -->
+    <section class="vision-about-section" data-animate>
+      <div class="container">
+        <div class="section-header">
+          <h2>Vision & About Us</h2>
+        </div>
+        <div class="vision-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOGO CAROUSEL SECTION ========== -->
+    <section class="logo-carousel-section" >
+      <div class="container">
+        <div class="logo-carousel">
+          <div class="logo-item">
+            <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="70" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#1C1917">Cambridge</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="60" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#1C1917">Oxford</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="75" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1C1917">Penguin Books</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="70" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1C1917">Scholastic</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="5" width="160" height="30" rx="4" fill="#1C1917"/>
+              <text x="80" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FEFDDF">NAT GEO</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1C1917">DK</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LATEST MAGAZINES SECTION ========== -->
+    <section id="latest-magazines" class="latest-magazines-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Latest Magazines</h2>
+          <p>Discover our newest releases and publications</p>
+        </div>
+
+        <div class="gallery-grid latest-magazines-grid">
+          <!-- Magazine 1 -->
+          <div class="update-card" onclick="window.open('view.html?pdf=assets/test.pdf', '_blank', 'noopener')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" alt="Ấn phẩm mới nhất">
+              <span class="update-badge">Mới nhất</span>
             </div>
-            <h3 style="white-space: nowrap;">"Thắp Sáng Trang Văn"</h3>
-            <p>
-              Mùa đọc 2025-2026<br>
-              Khám phá thế giới qua từng trang sách
-            </p>
+            <div class="update-content">
+              <h3>Thắp Sáng Trang Văn (2025-2026)</h3>
+              <p>Khám phá thế giới qua từng trang sách với ấn phẩm mới nhất.</p>
+            </div>
           </div>
 
-          <div class="hero-actions">
-            <a href="view.html?pdf=assets/test.pdf" class="btn btn-primary">Đọc Ngay!</a>
-            <a href="magazine.html" class="btn btn-secondary">Xem Thêm</a>
+          <!-- Magazine 2 -->
+          <div class="update-card" onclick="window.open('view.html', '_blank', 'noopener')">
+            <div class="update-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" alt="Ấn phẩm trước">
+              <span class="update-badge">Đã phát hành</span>
+            </div>
+            <div class="update-content">
+              <h3>Hành Trình Tri Thức</h3>
+              <p>Tuyển tập bài viết văn học nổi bật của các Vinser.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -161,40 +237,26 @@
       <div class="container">
         <div class="editorial-content">
           <h2>Lời Nói Đầu</h2>
-          <p class="subtitle">"Thắp Sáng Trang Văn"</p>
+          <!-- <p class="subtitle">"Thắp Sáng Trang Văn"</p> -->
 
-          <!-- Editorial Letter Content from PDF -->
           <p>
-            Thân gửi quý độc giả,
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
 
           <p>
-            Mỗi trang văn được viết ra đều mang trong mình một ánh sáng. Đó không phải là thứ ánh
-            sáng rực rỡ để thu hút ánh nhìn, mà là ánh sáng âm thầm được thắp lên trong suy nghĩ và
-            tâm hồn của người đọc. Một câu chuyện có thể gieo thêm niềm tin, một vần thơ có thể
-            đánh thức cảm xúc, một trang sách có thể mở ra những góc nhìn mới về cuộc sống. Có lẽ,
-            đó chính là ý nghĩa của việc thắp sáng trang văn.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
 
           <p>
-            Với mong muốn lan tỏa tình yêu dành cho sách và cùng gìn giữ văn hóa đọc trong cộng
-            đồng Vinser, Tạp Chí Đọc chính thức ra mắt trang số đầu tiên với chủ đề "Thắp Sáng Trang
-            Văn". Đây là nơi những cảm xúc, suy tư và góc nhìn của các Vinser được gửi gắm qua nhiều
-            thể loại văn chương khác nhau: từ thơ, truyện ngắn, tản văn đến những bài cảm nhận sách.
-            Mỗi tác phẩm mang một màu sắc riêng, nhưng đều được viết nên từ tình yêu văn học và
-            khát vọng sẻ chia.
+            Curabitur pretium tiddunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.
           </p>
 
           <div class="quote-callout">
-            "Chúng tôi hy vọng rằng, khi lật mở từng trang tạp chí, bạn không chỉ bắt gặp những câu
-            chuyện hay, mà còn tìm thấy một phần của chính mình trong đó từ những tác phẩm
-            thường nhật. Bởi đôi khi, chỉ cần một trang văn được mở ra, cũng đủ để một ngọn lửa được
-            thắp lên."
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum."
           </div>
 
           <p>
-            Xin cảm ơn bạn đã đồng hành cùng Tạp Chí Đọc trong hành trình đầu tiên này. Mong rằng
-            mỗi lần gặp lại, chúng ta sẽ cùng nhau viết tiếp câu chuyện về văn chương.
+            Fusce aliquet pedem ut purus. Cras id dui. Nam ipsum risus, ruturm vitae, vestibulum eu, molestie vel, lacus.
           </p>
 
           <p class="editorial-signature">
