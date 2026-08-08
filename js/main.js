@@ -164,6 +164,13 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(el);
   });
   
+  // ========== DYNAMIC YEAR UPDATE ==========
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    const currentYear = new Date().getFullYear();
+    currentYearElement.textContent = currentYear;
+  }
+  
 });
 
 // ========== UTILITY FUNCTIONS ==========

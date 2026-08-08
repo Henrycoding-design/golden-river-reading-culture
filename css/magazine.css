@@ -21,6 +21,8 @@
   color: white;
   font-size: 3rem;
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .magazine-hero p {
@@ -157,7 +159,7 @@
   padding-top: 0.75rem; /* Thu hẹp khoảng cách đường line */
   border-top: 1px solid var(--bg-primary);
   font-family: var(--font-small);
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 

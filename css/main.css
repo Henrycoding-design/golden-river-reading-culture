@@ -13,9 +13,9 @@
   --accent-gold-light: #FFC81E;
   --accent-teal: #73A5CA;
   --accent-purple: #7C3AED;
-  --font-serif: 'Inter', sans-serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-small: 'Dongle', sans-serif;
+  --font-serif: 'Redrose', serif;
+  --font-sans: 'Nunito', sans-serif;
+  --font-small: 'Nunito', sans-serif;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -33,11 +33,14 @@
   --bg-card: #1C1917;
   --text-primary: #FAFAF9;
   --text-secondary: #A8A29E;
-  --accent-gold-light: #3D2E00;
+  /* --accent-gold-light: #3D2E00; */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  .quote-callout {
+    background-color: #3D2E00;
+  }
 }
 
 /* Reset & Base */
@@ -100,6 +103,35 @@ a:hover {
 /* Section Spacing */
 section {
   padding: 4rem 0;
+}
+
+/* Hero Sections */
+.hero, .page-hero {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-purple) 100%);
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero h1, .page-hero h1 {
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle, .page-hero p {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Utility Classes */

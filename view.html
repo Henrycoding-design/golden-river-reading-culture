@@ -1,37 +1,38 @@
 <!--
  This is the main PDF flip approach test. Using StPageFlip, a modern, and actively maintained lib.
  Compatible with modern websites
- This file also have windowed loading pages (+-10), reducing memory, more compatible with mobile
+ This file also have windowed loading pages (+-10), reducing memory, more compatible on mobile
  also integrated with dynamic usePortrait param to enhance readability on both small and big screens
  by switching between one-page and two-page display
-  -->
+
+ Added:
+ - Zoom controller
+ - Page navigation controller
+ - Direct page input
+ - Drag/pan support while zoomed
+ - Hide/show controller button
+-->
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF FlipBook | Golden River - Thắp Sáng Trang Văn</title>
+<title>PDF FlipBook | Vinschool Golden River - Tạp Chí Đọc</title>
 
 <!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-<!-- StPageFlip -->
 <!--
  StPageFlip v2.0.7
  Pinned version for project stability.
  Tested with PDF.js 3.11.174.
 -->
- <!--
- Dependencies pinned:
- - PDF.js 3.11.174
- - StPageFlip 2.0.7
-
- Do not upgrade without regression testing.
--->
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -40,30 +41,64 @@
 
 body{
     background:
-        radial-gradient(circle at top left, rgba(232,127,36,0.2), transparent 32vw),
-        radial-gradient(circle at bottom right, rgba(115,165,202,0.18), transparent 34vw),
+        radial-gradient(
+            circle at top left,
+            rgba(232,127,36,0.2),
+            transparent 32vw
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(115,165,202,0.18),
+            transparent 34vw
+        ),
         #2f2f2f;
-    margin: 0;
+
     overflow:hidden;
+
+    width:100vw;
+    height:100vh;
+
+    font-family:"Plus Jakarta Sans", Arial, sans-serif;
+}
+
+
+/* --------------------------------------------------
+   BOOK VIEWPORT
+-------------------------------------------------- */
+
+#book-viewport{
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    width:100vw;
-    height:100vh;
-    font-family:"Plus Jakarta Sans", Arial, sans-serif
+
+    overflow:hidden;
+
+    touch-action:none;
 }
+
+
+/* --------------------------------------------------
+   BOOK
+-------------------------------------------------- */
 
 #book{
     width:95vw;
     height:95vh;
-    display:none;
-}
 
-#loading{
-    color:white;
-    position:absolute;
-    font-size:22px;
-    letter-spacing:0.02em;
+    display:none;
+
+    transform-origin:center center;
+
+    will-change:transform;
+
+    transition:transform 0.2s ease;
 }
 
 .page{
@@ -76,196 +111,2047 @@ canvas{
     width:100%;
     height:100%;
 }
+
+
+/* --------------------------------------------------
+   LOADING
+-------------------------------------------------- */
+
+#loading{
+    color:white;
+
+    position:absolute;
+
+    font-size:22px;
+
+    letter-spacing:0.02em;
+}
+
+
+/* --------------------------------------------------
+   CONTROLS
+-------------------------------------------------- */
+
+#controls{
+    position:fixed;
+
+    left:50%;
+    bottom:20px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 10px;
+
+    background:rgba(25,25,25,0.88);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:14px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.35);
+
+    color:white;
+
+    z-index:1000;
+
+    user-select:none;
+}
+
+
+/* --------------------------------------------------
+   GENERIC CONTROL BUTTON
+-------------------------------------------------- */
+
+.control-btn{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:9px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:18px;
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.control-btn:hover{
+    background:rgba(255,255,255,0.16);
+}
+
+.control-btn:active{
+    transform:scale(0.92);
+}
+
+.control-btn:disabled{
+    opacity:0.3;
+    cursor:not-allowed;
+}
+
+
+/* --------------------------------------------------
+   PAGE INDICATOR
+-------------------------------------------------- */
+
+#page-indicator{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:4px;
+
+    min-width:82px;
+
+    text-align:center;
+
+    font-size:14px;
+    font-weight:600;
+
+    letter-spacing:0.02em;
+}
+
+
+/* Current page input */
+
+#page-input{
+    width:42px;
+    height:30px;
+
+    padding:0 4px;
+
+    border:none;
+    border-radius:7px;
+
+    background:rgba(255,255,255,0.1);
+
+    color:white;
+
+    text-align:center;
+
+    font-family:inherit;
+    font-size:13px;
+    font-weight:600;
+
+    outline:none;
+
+    transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+/* Remove number arrows */
+
+#page-input::-webkit-inner-spin-button,
+#page-input::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+}
+
+#page-input{
+    appearance:textfield;
+}
+
+
+/* Input focus */
+
+#page-input:focus{
+    background:rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,0.18);
+}
+
+
+/* Total page number */
+
+#total-pages{
+    min-width:22px;
+
+    color:rgba(255,255,255,0.7);
+}
+
+
+/* --------------------------------------------------
+   DIVIDER
+-------------------------------------------------- */
+
+.control-divider{
+    width:1px;
+    height:22px;
+
+    background:rgba(255,255,255,0.15);
+
+    margin:0 3px;
+}
+
+
+/* --------------------------------------------------
+   ZOOM VALUE
+-------------------------------------------------- */
+
+#zoom-value{
+    min-width:46px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:rgba(255,255,255,0.85);
+}
+
+
+/* --------------------------------------------------
+   ZOOM SLIDER
+-------------------------------------------------- */
+
+#zoom-slider{
+    width:90px;
+
+    cursor:pointer;
+}
+
+
+/* --------------------------------------------------
+   HIDE BUTTON
+-------------------------------------------------- */
+
+#hide-controls{
+    font-size:17px;
+
+    background:rgba(255,255,255,0.06);
+}
+
+#hide-controls:hover{
+    background:rgba(255,80,80,0.22);
+}
+
+
+/* --------------------------------------------------
+   SHOW CONTROLS
+-------------------------------------------------- */
+
+#show-controls{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    width:42px;
+    height:42px;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    border-radius:12px;
+
+    background:rgba(25,25,25,0.88);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    z-index:1001;
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,0.3);
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+#show-controls:hover{
+    background:rgba(255,255,255,0.16);
+}
+
+#show-controls:active{
+    transform:scale(0.92);
+}
+
+
+/* --------------------------------------------------
+   PAN CURSOR
+-------------------------------------------------- */
+
+#book-viewport.is-pannable{
+    cursor:grab;
+}
+
+#book-viewport.is-panning{
+    cursor:grabbing;
+}
+
+#book-viewport.is-panning #book{
+    transition:none;
+}
+
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width:600px){
+
+    #controls{
+        bottom:12px;
+
+        padding:7px 8px;
+
+        gap:5px;
+
+        border-radius:12px;
+    }
+
+    .control-btn{
+        width:32px;
+        height:32px;
+    }
+
+    #page-indicator{
+        min-width:72px;
+        font-size:13px;
+    }
+
+    #page-input{
+        width:38px;
+        height:28px;
+
+        font-size:12px;
+    }
+
+    #total-pages{
+        min-width:18px;
+    }
+
+    #zoom-slider{
+        width:65px;
+    }
+
+    #zoom-value{
+        min-width:40px;
+        font-size:12px;
+    }
+
+    #show-controls{
+        right:12px;
+        bottom:12px;
+    }
+}
+
 </style>
 
 </head>
+
 <body>
 
-<div id="loading">Loading magazine...</div>
+<div id="loading">
+    Loading magazine...
+</div>
 
-<div id="book"></div>
+
+<!--
+ The viewport clips the zoomed book.
+ The book itself is moved inside this viewport.
+-->
+<div id="book-viewport">
+    <div id="book"></div>
+</div>
+
+
+<!-- --------------------------------------------------
+     CONTROLS
+-------------------------------------------------- -->
+
+<div id="controls">
+
+    <!-- Previous page -->
+    <button
+        id="prev-btn"
+        class="control-btn"
+        aria-label="Previous page"
+        title="Previous page"
+    >
+        &lt;
+    </button>
+
+
+    <!-- Current page / total pages -->
+    <div id="page-indicator">
+
+        <input
+            id="page-input"
+            type="number"
+            min="1"
+            value="1"
+            aria-label="Current page"
+            title="Go to page"
+        >
+
+        <span>/</span>
+
+        <span id="total-pages">
+            1
+        </span>
+
+    </div>
+
+
+    <!-- Next page -->
+    <button
+        id="next-btn"
+        class="control-btn"
+        aria-label="Next page"
+        title="Next page"
+    >
+        &gt;
+    </button>
+
+
+    <div class="control-divider"></div>
+
+
+    <!-- Zoom out -->
+    <button
+        id="zoom-out"
+        class="control-btn"
+        aria-label="Zoom out"
+        title="Zoom out"
+    >
+        −
+    </button>
+
+
+    <!-- Zoom slider -->
+    <input
+        id="zoom-slider"
+        type="range"
+        min="0.75"
+        max="1.75"
+        step="0.05"
+        value="1"
+        aria-label="Zoom"
+    >
+
+
+    <!-- Zoom in -->
+    <button
+        id="zoom-in"
+        class="control-btn"
+        aria-label="Zoom in"
+        title="Zoom in"
+    >
+        +
+    </button>
+
+
+    <!-- Zoom percentage -->
+    <div id="zoom-value">
+        100%
+    </div>
+
+
+    <div class="control-divider"></div>
+
+
+    <!-- Hide controls -->
+    <button
+        id="hide-controls"
+        class="control-btn"
+        aria-label="Hide controls"
+        title="Hide controls"
+    >
+        ×
+    </button>
+
+</div>
+
+
+<!-- Show controls -->
+<button
+    id="show-controls"
+    aria-label="Show controls"
+    title="Show controls"
+>
+    ☰
+</button>
+
 
 <script>
 
-// Get PDF URL from URL parameters, fallback to default
-const urlParams = new URLSearchParams(window.location.search);
-const pdfUrl = urlParams.get('pdf') || "assets/test.pdf";
-const RENDER_SCALE = 1.5; // Render resolution for PDF.js
+
+// --------------------------------------------------
+// PDF CONFIGURATION
+// --------------------------------------------------
+
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const pdfUrl =
+    urlParams.get('pdf') ||
+    "assets/release/test.pdf";
+
+const RENDER_SCALE = 1.5;
+
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+
+// --------------------------------------------------
+// LOAD BOOK
+// --------------------------------------------------
 
 async function loadBook(){
 
-    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+    const pdf =
+        await pdfjsLib
+            .getDocument(pdfUrl)
+            .promise;
 
-    const container = document.getElementById("book");
 
-    // Get the viewport size
-    const firstPage = await pdf.getPage(1);
-    const firstViewport = firstPage.getViewport({ scale: 1}); // Logical page size for StPageFlip (independent of render quality)
+    const viewportElement =
+        document.getElementById(
+            "book-viewport"
+        );
 
-    const pageWidth = firstViewport.width;
-    const pageHeight = firstViewport.height;
+
+    const container =
+        document.getElementById(
+            "book"
+        );
+
+
+    // --------------------------------------------------
+    // GET PDF PAGE SIZE
+    // --------------------------------------------------
+
+    const firstPage =
+        await pdf.getPage(1);
+
+
+    const firstViewport =
+        firstPage.getViewport({
+            scale:1
+        });
+
+
+    const pageWidth =
+        firstViewport.width;
+
+
+    const pageHeight =
+        firstViewport.height;
+
+
+    // --------------------------------------------------
+    // PAGE WRAPPERS
+    // --------------------------------------------------
 
     const wrappers = [];
+
     const rendered = new Set();
 
-    //load wrappers first
-    for (let i = 1; i <= pdf.numPages; i++) {
 
-        const wrapper = document.createElement("div");
-        wrapper.className = "page";
+    for(
+        let i = 1;
+        i <= pdf.numPages;
+        i++
+    ){
 
-        wrapper.dataset.page = i;
+        const wrapper =
+            document.createElement(
+                "div"
+            );
 
-        container.appendChild(wrapper);
-        wrappers.push(wrapper);
+
+        wrapper.className =
+            "page";
+
+
+        wrapper.dataset.page =
+            i;
+
+
+        container.appendChild(
+            wrapper
+        );
+
+
+        wrappers.push(
+            wrapper
+        );
+
     }
 
-    async function renderPage(pageNumber) {
-        if (rendered.has(pageNumber))
+
+    // --------------------------------------------------
+    // RENDER PAGE
+    // --------------------------------------------------
+
+    async function renderPage(
+        pageNumber
+    ){
+
+        if(
+            rendered.has(
+                pageNumber
+            )
+        ){
+
             return;
 
-        const wrapper = wrappers[pageNumber - 1];
-        const page = await pdf.getPage(pageNumber);
-        const viewport = page.getViewport({ scale: RENDER_SCALE });
+        }
 
-        // Create a temporary, off-screen canvas to render the PDF page
-        const canvas = document.createElement("canvas");
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+
+        const wrapper =
+            wrappers[
+                pageNumber - 1
+            ];
+
+
+        const page =
+            await pdf.getPage(
+                pageNumber
+            );
+
+
+        const viewport =
+            page.getViewport({
+                scale:RENDER_SCALE
+            });
+
+
+        const canvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        canvas.width =
+            viewport.width;
+
+
+        canvas.height =
+            viewport.height;
+
 
         await page.render({
-            canvasContext: canvas.getContext("2d"),
+
+            canvasContext:
+                canvas.getContext(
+                    "2d"
+                ),
+
             viewport
+
         }).promise;
 
-        // Convert the rendered canvas into an image string
-        const img = document.createElement("img");
-        img.src = canvas.toDataURL("image/webp", 0.8); // Using webp for better mobile performance
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.display = "block";
 
-        // Put the safe, cloneable image inside the wrapper instead of the canvas
-        wrapper.replaceChildren(img);
+        // Convert canvas to WebP
 
-        rendered.add(pageNumber);
+        const img =
+            document.createElement(
+                "img"
+            );
+
+
+        img.src =
+            canvas.toDataURL(
+                "image/webp",
+                0.8
+            );
+
+
+        img.style.width =
+            "100%";
+
+        img.style.height =
+            "100%";
+
+        img.style.display =
+            "block";
+
+
+        wrapper.replaceChildren(
+            img
+        );
+
+
+        rendered.add(
+            pageNumber
+        );
+
     }
 
-    function unloadPage(pageNumber) {
-        if (!rendered.has(pageNumber))
+
+    // --------------------------------------------------
+    // UNLOAD PAGE
+    // --------------------------------------------------
+
+    function unloadPage(
+        pageNumber
+    ){
+
+        if(
+            !rendered.has(
+                pageNumber
+            )
+        ){
+
             return;
 
-        wrappers[pageNumber - 1].replaceChildren();
+        }
 
-        rendered.delete(pageNumber);
+
+        wrappers[
+            pageNumber - 1
+        ].replaceChildren();
+
+
+        rendered.delete(
+            pageNumber
+        );
+
     }
+
+
+    // --------------------------------------------------
+    // WINDOWED PAGE LOADING
+    // --------------------------------------------------
 
     const WINDOW = 10;
 
-    async function updateWindow(current) {
 
-        const start = Math.max(1, current - WINDOW);
-        const end = Math.min(pdf.numPages, current + WINDOW);
+    async function updateWindow(
+        current
+    ){
+
+        const start =
+            Math.max(
+                1,
+                current - WINDOW
+            );
+
+
+        const end =
+            Math.min(
+                pdf.numPages,
+                current + WINDOW
+            );
+
 
         // Render nearby pages
-        for (let i = start; i <= end; i++) {
+        for(
+            let i = start;
+            i <= end;
+            i++
+        ){
+
             renderPage(i);
+
         }
+
 
         // Remove distant pages
-        for (const page of [...rendered]) {
+        for(
+            const page of [...rendered]
+        ){
 
-            if (page < start || page > end)
+            if(
+                page < start ||
+                page > end
+            ){
+
                 unloadPage(page);
 
+            }
+
         }
+
     }
 
-    document.getElementById("loading").style.display="none";
-    container.style.display="block";
 
-    const mobile = window.innerWidth < 768;
+    // --------------------------------------------------
+    // SHOW BOOK
+    // --------------------------------------------------
 
-    const widthScale = mobile ? 0.5 : 0.75;
-    const heightScale = mobile ? 0.5 : 0.65;
+    document
+        .getElementById("loading")
+        .style.display =
+            "none";
 
-    const pageFlip = new St.PageFlip(container, {
-        width: pageWidth * widthScale,
-        height: pageHeight * heightScale,
 
-        // size: "stretch",
-        // autoSize: true,
-        // Don't use size: "stretch".
-        // It breaks usePortrait in this version of StPageFlip.
+    container.style.display =
+        "block";
 
-        usePortrait: true,
 
-        showCover: true,
-        drawShadow: true,
-        maxShadowOpacity: 0.5,
+    // --------------------------------------------------
+    // PAGE FLIP SIZE
+    // --------------------------------------------------
 
-        mobileScrollSupport: true,
-        useMouseEvents: true,
+    const mobile =
+        window.innerWidth < 768;
 
-        flippingTime: 700,
-        startPage: 0
-    });
 
-    pageFlip.loadFromHTML(wrappers);
+    const widthScale =
+        mobile
+            ? 0.5
+            : 0.75;
 
-    await new Promise(requestAnimationFrame);
 
-    // start rendering
+    const heightScale =
+        mobile
+            ? 0.5
+            : 0.65;
+
+
+    // --------------------------------------------------
+    // ST PAGE FLIP
+    // --------------------------------------------------
+
+    const pageFlip =
+        new St.PageFlip(
+            container,
+            {
+
+                width:
+                    pageWidth *
+                    widthScale,
+
+                height:
+                    pageHeight *
+                    heightScale,
+
+                /*
+                 Do not use:
+                    size: "stretch"
+                    autoSize: true
+
+                 They break usePortrait
+                 in StPageFlip 2.0.7.
+                */
+
+                usePortrait:true,
+
+                showCover:true,
+
+                drawShadow:true,
+
+                maxShadowOpacity:0.5,
+
+                mobileScrollSupport:true,
+
+                useMouseEvents:true,
+
+                flippingTime:700,
+
+                startPage:0
+
+            }
+        );
+
+
+    pageFlip.loadFromHTML(
+        wrappers
+    );
+
+
+    await new Promise(
+        requestAnimationFrame
+    );
+
+
+    // --------------------------------------------------
+    // INITIAL PAGE
+    // --------------------------------------------------
+
     await updateWindow(1);
 
-    // update loading pages/unloading pages on flip
-    pageFlip.on("flip", e => {
 
-        updateWindow(e.data + 1);
+    // --------------------------------------------------
+    // PAGE UI
+    // --------------------------------------------------
 
-    });
-
-    pageFlip.on("changeOrientation", e => {
-        console.log(
-            e.data,
-            window.innerWidth,
-            window.innerHeight,
-            container.clientWidth,
-            container.clientHeight
+    const pageInput =
+        document.getElementById(
+            "page-input"
         );
-    });
 
-    window.addEventListener("resize", () => { // always working
-        console.log("resize", window.innerWidth, window.innerHeight);
-    });
 
-    // Keyboard navigation
-    document.addEventListener("keydown",(e)=>{
+    const totalPages =
+        document.getElementById(
+            "total-pages"
+        );
 
-        if(e.key==="ArrowRight"){
-            pageFlip.flipNext();
+
+    const prevButton =
+        document.getElementById(
+            "prev-btn"
+        );
+
+
+    const nextButton =
+        document.getElementById(
+            "next-btn"
+        );
+
+
+    totalPages.textContent =
+        pdf.numPages;
+
+
+    function updatePageUI(
+        pageIndex
+    ){
+
+        const currentPage =
+            pageIndex + 1;
+
+
+        pageInput.value =
+            currentPage;
+
+
+        prevButton.disabled =
+            currentPage <= 1;
+
+
+        nextButton.disabled =
+            currentPage >=
+            pdf.numPages;
+
+    }
+
+
+    updatePageUI(0);
+
+
+    // --------------------------------------------------
+    // GO TO PAGE
+    // --------------------------------------------------
+
+    function goToPage(value){
+
+        let page =
+            parseInt(
+                value,
+                10
+            );
+
+
+        /*
+         Invalid input:
+         restore current page.
+        */
+
+        if(
+            Number.isNaN(page)
+        ){
+
+            pageInput.value =
+                pageFlip
+                    .getCurrentPageIndex() + 1;
+
+            return;
+
         }
 
-        if(e.key==="ArrowLeft"){
+
+        /*
+         Clamp to valid range.
+        */
+
+        page =
+            Math.max(
+                1,
+                Math.min(
+                    pdf.numPages,
+                    page
+                )
+            );
+
+
+        pageInput.value =
+            page;
+
+
+        const targetIndex =
+            page - 1;
+
+
+        const currentIndex =
+            pageFlip.getCurrentPageIndex();
+
+
+        if(
+            targetIndex ===
+            currentIndex
+        ){
+
+            return;
+
+        }
+
+
+        pageFlip.turnToPage(
+            targetIndex
+        );
+
+    }
+
+
+    // --------------------------------------------------
+    // PAGE INPUT — ENTER
+    // --------------------------------------------------
+
+    pageInput.addEventListener(
+        "keydown",
+        e => {
+
+            if(
+                e.key === "Enter"
+            ){
+
+                e.preventDefault();
+
+                goToPage(
+                    pageInput.value
+                );
+
+                pageInput.blur();
+
+            }
+
+
+            /*
+             ArrowUp / ArrowDown:
+             quickly move one page.
+            */
+
+            if(
+                e.key === "ArrowUp"
+            ){
+
+                e.preventDefault();
+
+                pageInput.stepUp();
+
+                goToPage(
+                    pageInput.value
+                );
+
+            }
+
+
+            if(
+                e.key === "ArrowDown"
+            ){
+
+                e.preventDefault();
+
+                pageInput.stepDown();
+
+                goToPage(
+                    pageInput.value
+                );
+
+            }
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // PAGE INPUT — BLUR
+    // --------------------------------------------------
+
+    pageInput.addEventListener(
+        "blur",
+        () => {
+
+            goToPage(
+                pageInput.value
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // PREVENT FLIP EVENTS
+    // --------------------------------------------------
+
+    pageInput.addEventListener(
+        "pointerdown",
+        e => {
+
+            e.stopPropagation();
+
+        }
+    );
+
+
+    pageInput.addEventListener(
+        "click",
+        e => {
+
+            e.stopPropagation();
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // FLIP EVENT
+    // --------------------------------------------------
+
+    pageFlip.on(
+        "flip",
+        e => {
+
+            const currentPage =
+                e.data + 1;
+
+
+            updateWindow(
+                currentPage
+            );
+
+
+            updatePageUI(
+                e.data
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // PAGE NAVIGATION
+    // --------------------------------------------------
+
+    prevButton.addEventListener(
+        "click",
+        () => {
+
             pageFlip.flipPrev();
+
+        }
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        () => {
+
+            pageFlip.flipNext();
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // ZOOM CONTROLS
+    // --------------------------------------------------
+
+    const zoomSlider =
+        document.getElementById(
+            "zoom-slider"
+        );
+
+
+    const zoomValue =
+        document.getElementById(
+            "zoom-value"
+        );
+
+
+    const zoomIn =
+        document.getElementById(
+            "zoom-in"
+        );
+
+
+    const zoomOut =
+        document.getElementById(
+            "zoom-out"
+        );
+
+
+    let zoom = 1;
+
+    let panX = 0;
+    let panY = 0;
+
+
+    // --------------------------------------------------
+    // PAN BOUNDS
+    // --------------------------------------------------
+
+    function getPanBounds(){
+
+        const viewportWidth =
+            viewportElement.clientWidth;
+
+
+        const viewportHeight =
+            viewportElement.clientHeight;
+
+
+        const bookWidth =
+            container.offsetWidth *
+            zoom;
+
+
+        const bookHeight =
+            container.offsetHeight *
+            zoom;
+
+
+        const maxX =
+            Math.max(
+                0,
+                (bookWidth -
+                    viewportWidth) / 2
+            );
+
+
+        const maxY =
+            Math.max(
+                0,
+                (bookHeight -
+                    viewportHeight) / 2
+            );
+
+
+        return {
+            maxX,
+            maxY
+        };
+
+    }
+
+
+    // --------------------------------------------------
+    // CLAMP PAN
+    // --------------------------------------------------
+
+    function clampPan(){
+
+        const bounds =
+            getPanBounds();
+
+
+        panX =
+            Math.max(
+                -bounds.maxX,
+                Math.min(
+                    bounds.maxX,
+                    panX
+                )
+            );
+
+
+        panY =
+            Math.max(
+                -bounds.maxY,
+                Math.min(
+                    bounds.maxY,
+                    panY
+                )
+            );
+
+    }
+
+
+    // --------------------------------------------------
+    // APPLY TRANSFORM
+    // --------------------------------------------------
+
+    function applyTransform(){
+
+        clampPan();
+
+
+        container.style.transform =
+            `translate3d(
+                ${panX}px,
+                ${panY}px,
+                0
+            ) scale(${zoom})`;
+
+
+        zoomSlider.value =
+            zoom;
+
+
+        zoomValue.textContent =
+            `${Math.round(
+                zoom * 100
+            )}%`;
+
+
+        if(
+            zoom > 1
+        ){
+
+            viewportElement.classList.add(
+                "is-pannable"
+            );
+
+        }else{
+
+            viewportElement.classList.remove(
+                "is-pannable"
+            );
+
         }
 
-    });
+    }
 
-    // Window resize
-    window.addEventListener("resize", () => {
-        pageFlip.updateOrientation();
+    // --------------------------------------------------
+    // TWO-FINGER TOUCH PAN
+    // --------------------------------------------------
 
-        console.log(
-            pageFlip.getOrientation(),
-            pageFlip.getBoundsRect()
+    let isTwoFingerPanning = false;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    let touchInitialPanX = 0;
+    let touchInitialPanY = 0;
+
+
+    // --------------------------------------------------
+    // TOUCH START
+    // --------------------------------------------------
+
+    viewportElement.addEventListener(
+        "touchstart",
+        e => {
+
+            /*
+            Only enable two-finger panning
+            when zoomed in.
+            */
+
+            if (
+                zoom <= 1 ||
+                e.touches.length !== 2
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+            Stop StPageFlip from interpreting
+            this gesture as a page turn.
+            */
+
+            e.preventDefault();
+
+
+            const touch1 =
+                e.touches[0];
+
+            const touch2 =
+                e.touches[1];
+
+
+            /*
+            Start from the midpoint between
+            the two fingers.
+
+            This makes the gesture feel natural
+            regardless of where the fingers are.
+            */
+
+            touchStartX =
+                (touch1.clientX +
+                touch2.clientX) / 2;
+
+
+            touchStartY =
+                (touch1.clientY +
+                touch2.clientY) / 2;
+
+
+            touchInitialPanX =
+                panX;
+
+
+            touchInitialPanY =
+                panY;
+
+
+            isTwoFingerPanning = true;
+
+
+            viewportElement.classList.add(
+                "is-panning"
+            );
+
+        },
+        {
+            passive:false
+        }
+    );
+
+
+    // --------------------------------------------------
+    // TOUCH MOVE
+    // --------------------------------------------------
+
+    viewportElement.addEventListener(
+        "touchmove",
+        e => {
+
+            /*
+            Only handle exactly two fingers.
+            */
+
+            if (
+                !isTwoFingerPanning ||
+                e.touches.length !== 2
+            ) {
+
+                return;
+
+            }
+
+
+            e.preventDefault();
+
+
+            const touch1 =
+                e.touches[0];
+
+            const touch2 =
+                e.touches[1];
+
+
+            /*
+            Current midpoint between
+            the two fingers.
+            */
+
+            const currentX =
+                (touch1.clientX +
+                touch2.clientX) / 2;
+
+
+            const currentY =
+                (touch1.clientY +
+                touch2.clientY) / 2;
+
+
+            const deltaX =
+                currentX -
+                touchStartX;
+
+
+            const deltaY =
+                currentY -
+                touchStartY;
+
+
+            panX =
+                touchInitialPanX +
+                deltaX;
+
+
+            panY =
+                touchInitialPanY +
+                deltaY;
+
+
+            applyTransform();
+
+        },
+        {
+            passive:false
+        }
+    );
+
+
+    // --------------------------------------------------
+    // TOUCH END
+    // --------------------------------------------------
+
+    viewportElement.addEventListener(
+        "touchend",
+        e => {
+
+            /*
+            Once fewer than two fingers
+            remain, stop the two-finger
+            pan gesture.
+            */
+
+            if (
+                e.touches.length < 2
+            ) {
+
+                isTwoFingerPanning = false;
+
+
+                viewportElement.classList.remove(
+                    "is-panning"
+                );
+
+            }
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // TOUCH CANCEL
+    // --------------------------------------------------
+
+    viewportElement.addEventListener(
+        "touchcancel",
+        () => {
+
+            isTwoFingerPanning = false;
+
+
+            viewportElement.classList.remove(
+                "is-panning"
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // APPLY ZOOM
+    // --------------------------------------------------
+
+    function applyZoom(
+        value,
+        preservePan = true
+    ){
+
+        const oldZoom =
+            zoom;
+
+
+        zoom =
+            Math.min(
+                1.75,
+                Math.max(
+                    0.75,
+                    value
+                )
+            );
+
+
+        /*
+         Preserve the current
+         viewing position while zooming.
+        */
+
+        if(
+            preservePan &&
+            oldZoom !== 0
+        ){
+
+            const ratio =
+                zoom / oldZoom;
+
+
+            panX *= ratio;
+            panY *= ratio;
+
+        }
+
+
+        /*
+         At 100%, return to center.
+        */
+
+        if(
+            zoom <= 1
+        ){
+
+            panX = 0;
+            panY = 0;
+
+        }
+
+
+        applyTransform();
+
+    }
+
+
+    // --------------------------------------------------
+    // ZOOM SLIDER
+    // --------------------------------------------------
+
+    zoomSlider.addEventListener(
+        "input",
+        () => {
+
+            applyZoom(
+                parseFloat(
+                    zoomSlider.value
+                )
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // ZOOM IN
+    // --------------------------------------------------
+
+    zoomIn.addEventListener(
+        "click",
+        () => {
+
+            applyZoom(
+                zoom + 0.05
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // ZOOM OUT
+    // --------------------------------------------------
+
+    zoomOut.addEventListener(
+        "click",
+        () => {
+
+            applyZoom(
+                zoom - 0.05
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // DOUBLE CLICK RESET
+    // --------------------------------------------------
+
+    container.addEventListener(
+        "dblclick",
+        () => {
+
+            applyZoom(
+                1,
+                false
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // DRAG / PAN
+    // --------------------------------------------------
+
+    let isDragging = false;
+
+    let dragStartX = 0;
+    let dragStartY = 0;
+
+    let initialPanX = 0;
+    let initialPanY = 0;
+
+
+    viewportElement.addEventListener(
+        "pointerdown",
+        e => {
+
+            /*
+             Only pan while zoomed.
+            */
+
+            if(
+                zoom <= 1
+            ){
+
+                return;
+
+            }
+
+
+            if(
+                e.target.closest(
+                    "#controls"
+                ) ||
+                e.target.closest(
+                    "#show-controls"
+                )
+            ){
+
+                return;
+
+            }
+
+
+            isDragging = true;
+
+
+            dragStartX =
+                e.clientX;
+
+
+            dragStartY =
+                e.clientY;
+
+
+            initialPanX =
+                panX;
+
+
+            initialPanY =
+                panY;
+
+
+            viewportElement.classList.add(
+                "is-panning"
+            );
+
+
+            viewportElement.setPointerCapture(
+                e.pointerId
+            );
+
+        }
+    );
+
+
+    viewportElement.addEventListener(
+        "pointermove",
+        e => {
+
+            if(
+                !isDragging
+            ){
+
+                return;
+
+            }
+
+
+            const deltaX =
+                e.clientX -
+                dragStartX;
+
+
+            const deltaY =
+                e.clientY -
+                dragStartY;
+
+
+            panX =
+                initialPanX +
+                deltaX;
+
+
+            panY =
+                initialPanY +
+                deltaY;
+
+
+            applyTransform();
+
+        }
+    );
+
+
+    function stopDragging(e){
+
+        if(
+            !isDragging
+        ){
+
+            return;
+
+        }
+
+
+        isDragging = false;
+
+
+        viewportElement.classList.remove(
+            "is-panning"
         );
-    });
+
+
+        if(
+            e &&
+            viewportElement.hasPointerCapture(
+                e.pointerId
+            )
+        ){
+
+            viewportElement.releasePointerCapture(
+                e.pointerId
+            );
+
+        }
+
+    }
+
+
+    viewportElement.addEventListener(
+        "pointerup",
+        stopDragging
+    );
+
+
+    viewportElement.addEventListener(
+        "pointercancel",
+        stopDragging
+    );
+
+
+    // --------------------------------------------------
+    // CONTROLLER SHOW / HIDE
+    // --------------------------------------------------
+
+    const controls =
+        document.getElementById(
+            "controls"
+        );
+
+
+    const hideControls =
+        document.getElementById(
+            "hide-controls"
+        );
+
+
+    const showControls =
+        document.getElementById(
+            "show-controls"
+        );
+
+
+    hideControls.addEventListener(
+        "click",
+        () => {
+
+            controls.style.display =
+                "none";
+
+
+            showControls.style.display =
+                "flex";
+
+        }
+    );
+
+
+    showControls.addEventListener(
+        "click",
+        () => {
+
+            controls.style.display =
+                "flex";
+
+
+            showControls.style.display =
+                "none";
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // KEYBOARD NAVIGATION
+    // --------------------------------------------------
+
+    document.addEventListener(
+        "keydown",
+        e => {
+
+            /*
+             Don't hijack keyboard shortcuts
+             while typing into the page input.
+            */
+
+            if(
+                document.activeElement ===
+                pageInput
+            ){
+
+                if(
+                    e.key !== "Escape"
+                ){
+
+                    return;
+
+                }
+
+            }
+
+
+            if(
+                e.key === "ArrowRight"
+            ){
+
+                pageFlip.flipNext();
+
+            }
+
+
+            if(
+                e.key === "ArrowLeft"
+            ){
+
+                pageFlip.flipPrev();
+
+            }
+
+
+            // + / = zoom in
+
+            if(
+                e.key === "+" ||
+                e.key === "="
+            ){
+
+                applyZoom(
+                    zoom + 0.05
+                );
+
+            }
+
+
+            // - zoom out
+
+            if(
+                e.key === "-"
+            ){
+
+                applyZoom(
+                    zoom - 0.05
+                );
+
+            }
+
+
+            // 0 = reset zoom
+
+            if(
+                e.key === "0"
+            ){
+
+                applyZoom(
+                    1,
+                    false
+                );
+
+            }
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // ORIENTATION
+    // --------------------------------------------------
+
+    pageFlip.on(
+        "changeOrientation",
+        e => {
+
+            console.log(
+                e.data,
+                window.innerWidth,
+                window.innerHeight,
+                container.clientWidth,
+                container.clientHeight
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // WINDOW RESIZE
+    // --------------------------------------------------
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            pageFlip.updateOrientation();
+
+            clampPan();
+
+            applyTransform();
+
+
+            console.log(
+                pageFlip.getOrientation(),
+                pageFlip.getBoundsRect()
+            );
+
+        }
+    );
+
+
+    // --------------------------------------------------
+    // INITIAL TRANSFORM
+    // --------------------------------------------------
+
+    applyTransform();
 
 }
+
+
+// --------------------------------------------------
+// START
+// --------------------------------------------------
 
 loadBook();
 
