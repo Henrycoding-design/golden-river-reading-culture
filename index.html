@@ -74,6 +74,7 @@
 
     <!-- ========== HERO SECTION ========== -->
     <section class="hero" data-animate>
+      <div class="hero-overlay"></div>
       <div class="container">
         <div class="hero-content">
           <h1>Tạp Chí Đọc</h1>
@@ -88,7 +89,7 @@
     </section>
 
     <!-- ========== VISION / ABOUT SECTION ========== -->
-    <section class="vision-about-section" data-animate>
+    <!-- <section class="vision-about-section" data-animate>
       <div class="container">
         <div class="section-header">
           <h2>Tầm Nhìn & Về Chúng Tôi</h2>
@@ -98,7 +99,7 @@
           <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- ========== LOGO CAROUSEL SECTION ========== -->
     <section class="logo-carousel-section" >
@@ -147,29 +148,29 @@
           <p>Khám phá những bộ sưu tập và ấn phẩm mới nhất của chúng tôi</p>
         </div>
 
-        <div class="gallery-grid latest-magazines-grid">
-          <!-- Magazine 1 -->
-          <div class="update-card" onclick="window.open('view.html?pdf=assets/release/test.pdf', '_blank', 'noopener')">
-            <div class="update-image-wrapper">
+        <div class="latest-magazines-showcase">
+          <!-- Featured Magazine Card -->
+          <div class="featured-magazine-card" onclick="window.open('view.html?pdf=assets/release/test.pdf', '_blank', 'noopener')">
+            <div class="featured-magazine-image">
               <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" alt="Ấn phẩm mới nhất">
-              <span class="update-badge">Mới nhất</span>
+              <span class="featured-badge">Mới nhất</span>
             </div>
-            <div class="update-content">
+            <div class="featured-magazine-info">
               <h3>Thắp Sáng Trang Văn (2025-2026)</h3>
-              <p>Khám phá thế giới qua từng trang sách với ấn phẩm mới nhất.</p>
+              <p>Khám phá thế giới qua từng trang sách với ấn phẩm mới nhất từ Vinschool Golden River.</p>
+              <div class="featured-action">
+                <span class="btn-read">Xem Tạp Chí <i class="bi bi-arrow-right"></i></span>
+              </div>
             </div>
           </div>
 
-          <!-- Magazine 2 -->
-          <div class="update-card" onclick="window.open('.', '_blank', 'noopener')">
-            <div class="update-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" alt="Ấn phẩm trước">
-              <span class="update-badge">Đã phát hành</span>
-            </div>
-            <div class="update-content">
-              <h3>Hành Trình Tri Thức</h3>
-              <p>Tuyển tập bài viết văn học nổi bật của các Vinser.</p>
-            </div>
+          <!-- Editorial Quote Box -->
+          <div class="featured-quote-box">
+            <div class="quote-mark">“</div>
+            <blockquote class="quote-content">
+              Mỗi trang văn được viết ra đều mang trong mình một ánh sáng. Đó không phải là thứ ánh sáng rực rỡ để thu hút ánh nhìn, mà là ánh sáng âm thầm được thắp lên trong suy nghĩ và tâm hồn của người đọc.
+            </blockquote>
+            <cite class="quote-author">— Ban Biên Tập Tạp Chí Đọc</cite>
           </div>
         </div>
       </div>
@@ -187,7 +188,7 @@
           <!-- Item 1 -->
           <div class="update-card" onclick="window.open('.', '_blank', 'noopener')">
             <div class="update-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=600&fit=crop" alt="Ấn phẩm tạp chí đọc">
+              <img src="assets/public/img4.jpeg" alt="Ấn phẩm tạp chí đọc">
               <span class="update-badge">Mới phát hành</span>
             </div>
             <div class="update-content">
@@ -199,7 +200,7 @@
           <!-- Item 2 -->
           <div class="update-card" onclick="window.open('.', '_self')">
             <div class="update-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=600&fit=crop" alt="Lời nói đầu tạp chí">
+              <img src="assets/public/greet_img.png" alt="Lời nói đầu tạp chí">
               <span class="update-badge">Từ ban biên tập</span>
             </div>
             <div class="update-content">
@@ -211,7 +212,7 @@
           <!-- Item 3 -->
           <div class="update-card" onclick="window.open('.', '_self')">
             <div class="update-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&h=675&fit=crop" alt="Đội ngũ biên tập">
+              <img src="assets/public/img3.jpg" alt="Đội ngũ biên tập">
               <span class="update-badge">Đội ngũ</span>
             </div>
             <div class="update-content">
@@ -221,7 +222,7 @@
           </div>
 
           <!-- Item 4 -->
-          <div class="update-card" onclick="window.open('.', '_blank', 'noopener')">
+          <!-- <div class="update-card" onclick="window.open('.', '_blank', 'noopener')">
             <div class="update-image-wrapper">
               <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=900&h=675&fit=crop" alt="Tải bản PDF tạp chí">
               <span class="update-badge">PDF</span>
@@ -230,7 +231,7 @@
               <h3>Nisi Ut Aliquip</h3>
               <p>Nisi ut aliquip ex ea commodo consequat duis aute irure dolor.</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
