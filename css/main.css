@@ -114,6 +114,46 @@ section {
   color: white;
   padding: 6rem 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left warm orange gradient glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(
+    to right, 
+    rgba(255, 90, 0, 0.35) 0%,
+    rgba(255, 165, 0, 0.15) 45%,
+    transparent 100%
+  ) !important;
+  /* display: block; */
+  pointer-events: none;
+  z-index: 2;
+  /* mix-blend-mode: screen; */
+}
+
+/* Right blue light (bright sky) gradient glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(to left, 
+    rgba(135, 206, 250, 0.6) 0%, 
+    rgba(173, 216, 230, 0.4) 30%,
+    rgba(135, 206, 250, 0.2) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero h1, .page-hero h1 {
