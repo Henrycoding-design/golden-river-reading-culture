@@ -637,6 +637,7 @@
 .editorial-section {
   background-color: var(--bg-card);
   padding: 4rem 0;
+  scroll-margin-top: 80px;
 }
 
 .editorial-content {
