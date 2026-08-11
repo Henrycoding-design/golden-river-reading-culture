@@ -737,13 +737,14 @@
   margin-top: 0.1rem;
 }
 
-.footer-section.contact-info a[href^="mailto:"] {
+.footer-section.contact-info a {
   color: #D6D3D1;
   text-decoration: none;
-  cursor: default;
+  transition: var(--transition);
 }
 
-.footer-section.contact-info a[href^="mailto:"]:hover {
+.footer-section.contact-info a:hover {
+  color: var(--accent-gold-light);
   text-decoration: underline;
   cursor: pointer;
 }
