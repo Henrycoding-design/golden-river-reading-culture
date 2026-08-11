@@ -559,7 +559,7 @@ canvas{
     <input
         id="zoom-slider"
         type="range"
-        min="0.75"
+        min="0.5"
         max="1.75"
         step="0.05"
         value="1"
@@ -931,14 +931,65 @@ async function loadBook(){
 
     const widthScale =
         mobile
-            ? 0.5
-            : 0.75;
+            ? 0.58
+            : 0.85;
 
 
     const heightScale =
         mobile
-            ? 0.5
-            : 0.65;
+            ? 0.55
+            : 0.75;
+
+
+    const MIN_ZOOM = 0.5;
+
+    const MAX_ZOOM = 1.75;
+
+    const BOOK_MARGIN_X =
+        mobile ? 24 : 48;
+
+    const BOOK_MARGIN_Y =
+        mobile ? 132 : 96;
+
+    const baseBookWidth =
+        pageWidth *
+        widthScale;
+
+    const baseBookHeight =
+        pageHeight *
+        heightScale;
+
+
+    function getFitZoom(){
+
+        const availableWidth =
+            Math.max(
+                0,
+                viewportElement.clientWidth -
+                    BOOK_MARGIN_X
+            );
+
+
+        const availableHeight =
+            Math.max(
+                0,
+                viewportElement.clientHeight -
+                    BOOK_MARGIN_Y
+            );
+
+
+        return Math.max(
+            MIN_ZOOM,
+            Math.min(
+                1,
+                availableWidth /
+                    baseBookWidth,
+                availableHeight /
+                    baseBookHeight
+            )
+        );
+
+    }
 
 
     // --------------------------------------------------
@@ -1314,7 +1365,8 @@ async function loadBook(){
         );
 
 
-    let zoom = 1;
+    let zoom =
+        getFitZoom();
 
     let panX = 0;
     let panY = 0;
@@ -1677,9 +1729,9 @@ async function loadBook(){
 
         zoom =
             Math.min(
-                1.75,
+                MAX_ZOOM,
                 Math.max(
-                    0.75,
+                    MIN_ZOOM,
                     value
                 )
             );
@@ -2125,6 +2177,19 @@ async function loadBook(){
         () => {
 
             pageFlip.updateOrientation();
+
+
+            if(
+                zoom <= 1
+            ){
+
+                zoom =
+                    getFitZoom();
+
+                panX = 0;
+                panY = 0;
+
+            }
 
             clampPan();
 
