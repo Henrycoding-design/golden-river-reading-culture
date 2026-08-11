@@ -737,6 +737,17 @@
   margin-top: 0.1rem;
 }
 
+.footer-section.contact-info a[href^="mailto:"] {
+  color: #D6D3D1;
+  text-decoration: none;
+  cursor: default;
+}
+
+.footer-section.contact-info a[href^="mailto:"]:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .footer-map {
   width: 100%;
   height: 250px;
