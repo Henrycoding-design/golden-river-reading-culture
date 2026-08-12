@@ -5,10 +5,14 @@
 
 /* ========== MAGAZINE HERO ========== */
 .magazine-hero {
-  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-gold) 100%);
+  /* background: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-gold) 100%); */
+  background-image: url(../assets/public/school_lib.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   padding: 6rem 0 4rem;
-  min-height: 300px;
+  min-height: 400px;
   display: flex;
   align-items: center;
 }
@@ -30,6 +34,38 @@
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
+}
+
+/* ========== HERO-GALLERY DIVIDER ========== */
+.hero-gallery-divider {
+  height: 3rem;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.15) 0%, 
+    rgba(0, 0, 0, 0.08) 50%, 
+    transparent 100%
+  );
+  position: relative;
+  z-index: 1;
+}
+
+.hero-gallery-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-gold-light), 
+    var(--accent-gold), 
+    var(--accent-gold-light), 
+    transparent
+  );
+  opacity: 0.5;
+  z-index:0;
 }
 
 /* ========== MAGAZINE GALLERY SECTION ========== */
