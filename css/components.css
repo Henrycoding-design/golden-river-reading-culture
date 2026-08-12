@@ -334,7 +334,11 @@
 
 /* ========== LATEST MAGAZINES SECTION ========== */
 .latest-magazines-section {
-  background-color: var(--bg-card);
+  /* background-color: var(--bg-card); */
+  background-image: url("../assets/public/latest_magazine.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 4rem 0;
 }
 
@@ -525,7 +529,11 @@
 
 /* ========== LATEST ACTIVITIES / UPDATES ========== */
 .updates-section {
-  background-color: var(--bg-primary);
+  /* background-color: var(--bg-primary); */
+  background-image: url(../assets/public/new_updates.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 4rem 0;
 }
 
@@ -1057,6 +1065,17 @@
   font-size: 1.15rem;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.latest-magazines-section .section-header p {
+  color: var(--bg-primary);
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.latest-magazines-section .section-header h2 {
+  color: #E1AD01;
 }
 
 /* ========== FOOTER ========== */
