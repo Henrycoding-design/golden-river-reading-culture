@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   color: white;
   padding: 6rem 0 4rem;
-  min-height: 480px;
+  min-height: 450px;
   display: flex;
   align-items: center;
 }
@@ -318,8 +318,9 @@
     font-size: 2rem;
   }
 
-  .magazine-hero p {
-    font-size: 1rem;
+  .magazine-hero p,
+  .magazine-gallery-section .section-header p {
+    font-size: 0.95rem;
   }
 
   .magazine-info {
@@ -348,6 +349,11 @@
 @media (max-width: 480px) {
   .magazine-hero h1 {
     font-size: 1.75rem;
+  }
+
+  .magazine-hero p,
+  .magazine-gallery-section .section-header p {
+    font-size: 0.875rem;
   }
 
   .magazine-badge {

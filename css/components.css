@@ -141,6 +141,11 @@
   box-shadow: 0 6px 22px rgba(255, 255, 255, 0.35);
 }
 
+/* Responsive Button Text Helpers */
+.btn-text-short {
+  display: none;
+}
+
 /* Magazine Cover Card */
 .magazine-cover-card {
   background: var(--bg-card);
@@ -267,13 +272,17 @@
   }
 
   .credits-hero p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
   .credits-hero h1 {
     font-size: 1.75rem;
+  }
+
+  .credits-hero p {
+    font-size: 0.875rem;
   }
 }
 
@@ -1226,12 +1235,36 @@
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+  .btn-text-full {
+    display: none;
+  }
+
+  .btn-text-short {
+    display: inline;
+  }
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.85rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero .btn {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.875rem;
+  }
+
+  .section-header p,
+  .page-hero p {
+    font-size: 0.95rem;
   }
 
   .gallery-grid {
@@ -1264,7 +1297,24 @@
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.35rem;
+    padding: 0.25rem 0.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-actions {
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .hero .btn {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.825rem;
+  }
+
+  .section-header p,
+  .page-hero p {
+    font-size: 0.875rem;
   }
 
   .page-hero h1 {
