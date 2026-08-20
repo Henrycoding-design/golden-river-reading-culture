@@ -1253,13 +1253,13 @@
   }
 
   .hero-actions {
-    gap: 0.75rem;
+    gap: 1.25rem;
     margin-top: 1.5rem;
   }
 
   .hero .btn {
-    padding: 0.55rem 1.1rem;
-    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
   }
 
   .section-header p,
@@ -1303,13 +1303,13 @@
   }
 
   .hero-actions {
-    gap: 0.5rem;
+    gap: 1rem;
     margin-top: 1.25rem;
   }
 
   .hero .btn {
-    padding: 0.5rem 0.85rem;
-    font-size: 0.825rem;
+    padding: 0.7rem 1.35rem;
+    font-size: 1rem;
   }
 
   .section-header p,
