@@ -1212,7 +1212,9 @@
 
 @media (max-width: 768px) {
   .footer-content {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+    grid-template-columns: none;
     gap: 2rem;
   }
 
