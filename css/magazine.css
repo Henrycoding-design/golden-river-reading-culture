@@ -39,11 +39,11 @@
 /* ========== HERO-GALLERY DIVIDER ========== */
 .hero-gallery-divider {
   height: 3rem;
-  background: linear-gradient(180deg, 
+  /* background: linear-gradient(180deg, 
     rgba(0, 0, 0, 0.15) 0%, 
     rgba(0, 0, 0, 0.08) 50%, 
     transparent 100%
-  );
+  ); */
   position: relative;
   z-index: 1;
 }

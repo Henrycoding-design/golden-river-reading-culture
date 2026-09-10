@@ -74,7 +74,8 @@
 
     <!-- ========== PAGE HEADER ========== -->
     <section class="page-hero credits-hero" data-animate>
-      <div class="container">
+      <div class="hero-overlay-credits"></div>
+      <div class="container" style="z-index: 100;">
         <div class="section-header">
           <h1>Đội Ngũ Biên Tập</h1>
           <p class="desktop-nowrap">
@@ -112,79 +113,95 @@
 
         </div>
 
-        <!-- Team Members Grid (Remaining 12 cards) -->
-        <div class="team-grid members-grid">
+        <!-- Department Columns Grid (4 Columns) -->
+        <div class="departments-grid">
 
-          <div class="team-member">
-            <div class="team-avatar">👩‍💻</div>
-            <h3>Đỗ Quỳnh Chi</h3>
-            <p class="role">Trưởng ban Biên tập</p>
+          <!-- Ban Nội Dung -->
+          <div class="department-card">
+            <div class="department-header">
+              <div class="department-icon"><i class="bi bi-pencil-square"></i></div>
+              <h3>Ban Nội Dung</h3>
+            </div>
+            <div class="department-members">
+              <div class="member-entry">
+                <div class="member-name">Đỗ Quỳnh Chi</div>
+                <div class="member-role">Trưởng ban Biên tập</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Đặng Ngân Hà</div>
+                <div class="member-role">Thành viên Biên tập</div>
+              </div>
+            </div>
           </div>
 
-          <div class="team-member">
-            <div class="team-avatar">👩‍📝</div>
-            <h3>Đặng Ngân Hà</h3>
-            <p class="role">Thành viên Biên tập</p>
+          <!-- Ban Thiết Kế -->
+          <div class="department-card">
+            <div class="department-header">
+              <div class="department-icon"><i class="bi bi-palette"></i></div>
+              <h3>Ban Thiết Kế</h3>
+            </div>
+            <div class="department-members">
+              <div class="member-entry">
+                <div class="member-name">Trần Bảo Linh</div>
+                <div class="member-role">Trưởng ban Thiết kế</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Phạm Thuỳ Anh</div>
+                <div class="member-role">Thành viên Thiết kế</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Nguyễn Lan Anh</div>
+                <div class="member-role">Thành viên Thiết kế</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Liên Kim Ngân</div>
+                <div class="member-role">Thành viên Thiết kế</div>
+              </div>
+            </div>
           </div>
 
-          <div class="team-member">
-            <div class="team-avatar">👩‍🎨</div>
-            <h3>Trần Bảo Linh</h3>
-            <p class="role">Trưởng ban Thiết kế</p>
+          <!-- Ban Hậu Cần -->
+          <div class="department-card">
+            <div class="department-header">
+              <div class="department-icon"><i class="bi bi-box-seam"></i></div>
+              <h3>Ban Hậu Cần</h3>
+            </div>
+            <div class="department-members">
+              <div class="member-entry">
+                <div class="member-name">Trần Mỹ Nhân</div>
+                <div class="member-role">Trưởng ban Marketing</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Trần Ngọc Bảo Hà</div>
+                <div class="member-role">Trưởng ban Hậu cần–Tài chính</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Hoàng Ngân Khánh</div>
+                <div class="member-role">Phó ban Hậu cần–Tài chính</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Ngô Hoàng Minh Thư</div>
+                <div class="member-role">Phó ban Hậu cần–Tài chính</div>
+              </div>
+            </div>
           </div>
 
-          <div class="team-member">
-            <div class="team-avatar">👩‍🔬</div>
-            <h3>Phạm Thuỳ Anh</h3>
-            <p class="role">Thành viên Thiết kế</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍💼</div>
-            <h3>Nguyễn Lan Anh</h3>
-            <p class="role">Thành viên Thiết kế</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍🎨</div>
-            <h3>Liên Kim Ngân</h3>
-            <p class="role">Thành viên Thiết kế</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👨‍💻</div>
-            <h3>Nguyễn Phúc Gia Khang</h3>
-            <p class="role">Thành viên Kĩ thuật</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👨‍💻</div>
-            <h3>Võ Tấn Bình</h3>
-            <p class="role">Thành viên Kĩ thuật</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍📢</div>
-            <h3>Trần Mỹ Nhân</h3>
-            <p class="role">Trưởng ban Marketing</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍💼</div>
-            <h3>Trần Ngọc Bảo Hà</h3>
-            <p class="role">Trưởng ban Hậu cần–Tài chính</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍💼</div>
-            <h3>Hoàng Ngân Khánh</h3>
-            <p class="role">Phó ban Hậu cần–Tài chính</p>
-          </div>
-
-          <div class="team-member">
-            <div class="team-avatar">👩‍💼</div>
-            <h3>Ngô Hoàng Minh Thư</h3>
-            <p class="role">Phó ban Hậu cần–Tài chính</p>
+          <!-- Ban Công Nghệ -->
+          <div class="department-card">
+            <div class="department-header">
+              <div class="department-icon"><i class="bi bi-code-slash"></i></div>
+              <h3>Ban Công Nghệ</h3>
+            </div>
+            <div class="department-members">
+              <div class="member-entry">
+                <div class="member-name">Võ Tấn Bình</div>
+                <div class="member-role">Thành viên Kĩ thuật</div>
+              </div>
+              <div class="member-entry">
+                <div class="member-name">Nguyễn Phúc Gia Khang</div>
+                <div class="member-role">Thành viên Kĩ thuật</div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -200,21 +217,36 @@
           <p>Gửi đến những tập thể và cá nhân đã đồng hành cùng tạp chí.</p>
         </div>
 
-        <div class="grid grid-2">
+        <div class="grid grid-3 thanks-grid">
 
-          <div class="card">
-            <h3 class="desktop-nowrap">📚 Thư Viện Trường</h3>
-            <p>Cảm ơn thư viện đã truyền cảm hứng, hỗ trợ tư liệu và tạo không gian để văn hóa đọc được nuôi dưỡng.</p>
+          <div class="card thanks-card">
+            <div class="thanks-image">
+              <img src="assets/public/school_lib.webp" alt="Thư Viện Trường" loading="lazy">
+            </div>
+            <div class="thanks-content">
+              <h3 class="desktop-nowrap">📚 Thư Viện Trường</h3>
+              <p>Cảm ơn thư viện đã truyền cảm hứng, hỗ trợ tư liệu và tạo không gian để văn hóa đọc được nuôi dưỡng.</p>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>👨‍🏫 Ban Giám Hiệu</h3>
-            <p>Ghi nhận sự hỗ trợ và tạo điều kiện để tạp chí có thể được hoàn thiện và chia sẻ đến cộng đồng Vinser.</p>
+          <div class="card thanks-card">
+            <div class="thanks-image">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop" alt="Ban Giám Hiệu" loading="lazy">
+            </div>
+            <div class="thanks-content">
+              <h3>👨‍🏫 Ban Giám Hiệu</h3>
+              <p>Ghi nhận sự hỗ trợ và tạo điều kiện để tạp chí có thể được hoàn thiện và chia sẻ đến cộng đồng Vinser.</p>
+            </div>
           </div>
 
-          <div class="card">
-            <h3>✍️ Các Tác Giả Trẻ</h3>
-            <p>Cảm ơn các bạn học sinh đã gửi gắm suy nghĩ, cảm xúc và tình yêu văn chương trong từng trang viết.</p>
+          <div class="card thanks-card">
+            <div class="thanks-image">
+              <img src="assets/public/img3.webp" alt="Các Tác Giả Trẻ" loading="lazy">
+            </div>
+            <div class="thanks-content">
+              <h3>✍️ Các Tác Giả Trẻ</h3>
+              <p>Cảm ơn các bạn học sinh đã gửi gắm suy nghĩ, cảm xúc và tình yêu văn chương trong từng trang viết.</p>
+            </div>
           </div>
         </div>
       </div>
