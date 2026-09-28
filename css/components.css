@@ -326,21 +326,54 @@
 /* ========== LOGO CAROUSEL SECTION ========== */
 .logo-carousel-section {
   background-color: var(--bg-primary);
-  padding: 3rem 0;
+  padding: 2rem 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  /* Prevents horizontal scrollbars on some devices */
+  width: 100%;
 }
 
-.logo-carousel {
+.logo-carousel-track {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  /* Flex gap between the two groups */
   gap: 3rem;
+  width: max-content;
+  user-select: none;
+}
+
+.logo-carousel-group {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  gap: 3rem;
+  flex-shrink: 0;
+  /* min-width: 100%; */
+  /* Animate the group directly */
+  animation: logo-scroll 20s linear infinite;
+  /* Smooth hardware acceleration to prevent sub-pixel stuttering */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.logo-carousel-track:hover .logo-carousel-group {
+  animation-play-state: paused;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate by -100% (the exact length of ONE group + gap) */
+    transform: translateX(calc(-100% - 3rem));
+  }
 }
 
 .logo-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   filter: grayscale(100%);
   opacity: 0.6;
   transition: var(--transition);
@@ -825,6 +858,18 @@
   color: var(--text-primary);
   margin-bottom: 0;
   font-weight: 700;
+}
+
+.department-icon-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px; /* Space between the two circles */
+  margin-bottom: 0.75rem;
+}
+
+.department-icon-group .department-icon {
+  margin: 0 !important;
 }
 
 .department-members {
@@ -1435,7 +1480,7 @@
     padding: 2rem 1.5rem 1.5rem;
   }
 
-  .logo-carousel {
+  .logo-carousel-track {
     gap: 1.5rem;
   }
 

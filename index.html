@@ -108,41 +108,79 @@
     </section> -->
 
     <!-- ========== LOGO CAROUSEL SECTION ========== -->
-    <section class="logo-carousel-section" >
-      <div class="container">
-        <div class="logo-carousel">
+    <section class="logo-carousel-section">
+      <div class="logo-carousel-track">
+        
+        <!-- First Group -->
+        <div class="logo-carousel-group">
           <div class="logo-item">
             <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-              <text x="70" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#1C1917">Cambridge</text>
+              <text x="70" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="currentColor">Cambridge</text>
             </svg>
           </div>
           <div class="logo-item">
             <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-              <text x="60" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#1C1917">Oxford</text>
+              <text x="60" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="currentColor">Oxford</text>
             </svg>
           </div>
           <div class="logo-item">
             <svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
-              <text x="75" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1C1917">Penguin Books</text>
+              <text x="75" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="currentColor">Penguin Books</text>
             </svg>
           </div>
           <div class="logo-item">
             <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-              <text x="70" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1C1917">Scholastic</text>
+              <text x="70" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="currentColor">Scholastic</text>
             </svg>
           </div>
           <div class="logo-item">
             <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="5" width="160" height="30" rx="4" fill="#1C1917"/>
-              <text x="80" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FEFDDF">NAT GEO</text>
+              <rect x="0" y="5" width="160" height="30" rx="4" fill="currentColor"/>
+              <text x="80" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="var(--bg-primary)">NAT GEO</text>
             </svg>
           </div>
           <div class="logo-item">
             <svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-              <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1C1917">DK</text>
+              <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="currentColor">DK</text>
             </svg>
           </div>
         </div>
+
+        <!-- Duplicate Group (aria-hidden for accessibility) -->
+        <div class="logo-carousel-group" aria-hidden="true">
+          <div class="logo-item">
+            <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="70" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="currentColor">Cambridge</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="60" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="currentColor">Oxford</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="150" height="40" viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="75" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="currentColor">Penguin Books</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="70" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="currentColor">Scholastic</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="5" width="160" height="30" rx="4" fill="currentColor"/>
+              <text x="80" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="var(--bg-primary)">NAT GEO</text>
+            </svg>
+          </div>
+          <div class="logo-item">
+            <svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+              <text x="50" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="currentColor">DK</text>
+            </svg>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -300,7 +338,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025-<span id="current-year"></span> Tạp Chí Đọc | Golden River.<a href="#">Điều khoản dịch vụ</a></p>
+        <p>© 2025-<span id="current-year"></span> Tạp Chí Đọc | Vinschool Golden River.</p>
       </div>
     </footer>
 
