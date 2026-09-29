@@ -92,7 +92,7 @@ body{
 
 #book{
     width:95vw;
-    height:95vh;
+    height:auto;
 
     display:none;
 
@@ -731,7 +731,7 @@ const urlParams =
 
 const pdfUrl =
     urlParams.get('pdf') ||
-    "assets/release/TẠP CHÍ ĐỌC - MÙA 25-26.pdf";
+    "assets/release/season_25-26.pdf";
 
 const RENDER_SCALE = 1.5;
 
@@ -871,11 +871,15 @@ async function loadBook(){
 
 
         canvas.width =
-            viewport.width;
+            Math.round(
+                viewport.width
+            );
 
 
         canvas.height =
-            viewport.height;
+            Math.round(
+                viewport.height
+            );
 
 
         await page.render({
@@ -1036,16 +1040,37 @@ async function loadBook(){
         window.innerWidth < 768;
 
 
-    const widthScale =
-        mobile
-            ? 0.5
-            : 0.75;
-
-
-    const heightScale =
+    /*
+      Use one scale for both dimensions so PDF export sizes cannot
+      distort the page or leave fractional flip geometry.
+    */
+    const displayScale =
         mobile
             ? 0.5
             : 0.65;
+
+
+    const flipHeight =
+        Math.round(
+            pageHeight *
+            displayScale
+        );
+
+
+    const flipWidth =
+        Math.round(
+            flipHeight *
+            (pageWidth / pageHeight)
+        );
+
+
+    /*
+      Hard cover pages are drawn from top:0 by StPageFlip, while
+      regular pages use the renderer's centered top offset. Keeping
+      this container exactly one page high makes that offset zero.
+    */
+    container.style.height =
+        `${flipHeight}px`;
 
 
     // --------------------------------------------------
@@ -1058,21 +1083,22 @@ async function loadBook(){
             {
 
                 width:
-                    pageWidth *
-                    widthScale,
+                    flipWidth,
 
                 height:
-                    pageHeight *
-                    heightScale,
+                    flipHeight,
 
                 /*
                  Do not use:
                     size: "stretch"
-                    autoSize: true
 
-                 They break usePortrait
+                 Stretch sizing breaks usePortrait
                  in StPageFlip 2.0.7.
                 */
+
+                size:"fixed",
+
+                autoSize:true,
 
                 usePortrait:true,
 
