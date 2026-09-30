@@ -166,6 +166,8 @@ canvas{
     z-index:1000;
 
     user-select:none;
+
+    transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
 
@@ -504,6 +506,170 @@ canvas{
     }
 }
 
+/* --------------------------------------------------
+   INFO BUTTON (DESKTOP ONLY)
+-------------------------------------------------- */
+
+#info-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(25, 25, 25, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    font-family: serif;
+
+    cursor: pointer;
+    z-index: 1001;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+#info-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+#info-btn:active {
+    transform: scale(0.92);
+}
+
+/* Hide Info button on mobile (<768px or single page view) */
+@media (max-width: 767px) {
+    #info-btn {
+        display: none !important;
+    }
+}
+
+
+/* --------------------------------------------------
+   SHORTCUTS MODAL
+-------------------------------------------------- */
+
+#shortcuts-modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2000;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.2s ease;
+}
+
+#shortcuts-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.shortcuts-card {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+
+    width: min(440px, calc(100vw - 32px));
+    padding: 24px;
+
+    color: white;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+    position: relative;
+}
+
+.shortcuts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shortcuts-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#modal-close-btn {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.shortcuts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.shortcut-item kbd {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+
+    padding: 3px 8px;
+
+    font-family: monospace;
+    font-size: 12px;
+    color: #fff;
+
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
 
 /* --------------------------------------------------
    MOBILE
@@ -715,6 +881,53 @@ canvas{
 >
     ☰
 </button>
+
+
+<!-- Info Button (Desktop Only) -->
+<button
+    id="info-btn"
+    aria-label="Keyboard Shortcuts"
+    title="Keyboard Shortcuts"
+>
+    i
+</button>
+
+<!-- Shortcuts Modal -->
+<div id="shortcuts-modal">
+    <div class="shortcuts-card">
+        <div class="shortcuts-header">
+            <h3>Phím Tắt / Shortcuts</h3>
+            <button id="modal-close-btn" aria-label="Close modal">×</button>
+        </div>
+
+        <div class="shortcuts-list">
+            <div class="shortcut-item">
+                <span>Chuyển trang tiếp / lùi</span>
+                <div><kbd>←</kbd> <kbd>→</kbd> / <kbd>PgUp</kbd> <kbd>PgDn</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Trang tiếp theo</span>
+                <kbd>Space</kbd>
+            </div>
+            <div class="shortcut-item">
+                <span>Ẩn / Hiện thanh điều khiển</span>
+                <kbd>H</kbd>
+            </div>
+            <div class="shortcut-item">
+                <span>Bật / Tắt Toàn màn hình</span>
+                <kbd>F</kbd>
+            </div>
+            <div class="shortcut-item">
+                <span>Phóng to / Thu nhỏ</span>
+                <div><kbd>+</kbd> <kbd>-</kbd></div>
+            </div>
+            <div class="shortcut-item">
+                <span>Đặt lại thu phóng (100%)</span>
+                <kbd>0</kbd>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -1198,8 +1411,15 @@ async function loadBook(){
     // --------------------------------------------------
     // GO TO PAGE
     // --------------------------------------------------
+    let lastPageTurnTime = 0;
+    const PAGE_TURN_COOLDOWN = 300; // ms between turns
 
     function goToPage(value){
+
+        const now = Date.now();
+        if (now - lastPageTurnTime < PAGE_TURN_COOLDOWN) {
+            return;
+        }
 
         let page =
             parseInt(
@@ -1261,6 +1481,7 @@ async function loadBook(){
 
         }
 
+        lastPageTurnTime = now;
 
         pageFlip.turnToPage(
             targetIndex
@@ -2178,147 +2399,150 @@ async function loadBook(){
 
 
     // --------------------------------------------------
-    // CONTROLLER SHOW / HIDE
+    // CONTROLS TOGGLE & KEYBOARD SHORTCUTS
     // --------------------------------------------------
 
-    const controls =
-        document.getElementById(
-            "controls"
-        );
+    const controls = document.getElementById("controls");
+    const hideControlsBtn = document.getElementById("hide-controls");
+    const showControlsBtn = document.getElementById("show-controls");
 
+    function hideControlsUI() {
+        controls.style.display = "none";
+        showControlsBtn.style.display = "flex";
+    }
 
-    const hideControls =
-        document.getElementById(
-            "hide-controls"
-        );
+    function showControlsUI() {
+        controls.style.display = "flex";
+        showControlsBtn.style.display = "none";
+    }
 
-
-    const showControls =
-        document.getElementById(
-            "show-controls"
-        );
-
-
-    hideControls.addEventListener(
-        "click",
-        () => {
-
-            controls.style.display =
-                "none";
-
-
-            showControls.style.display =
-                "flex";
-
+    function toggleControlsUI() {
+        if (controls.style.display === "none") {
+            showControlsUI();
+        } else {
+            hideControlsUI();
         }
-    );
+    }
 
+    hideControlsBtn.addEventListener("click", hideControlsUI);
+    showControlsBtn.addEventListener("click", showControlsUI);
 
-    showControls.addEventListener(
-        "click",
-        () => {
+    // Global Key Listener for shortcuts & arrow navigation with dedouble guard
+    window.addEventListener("keydown", e => {
 
-            controls.style.display =
-                "flex";
-
-
-            showControls.style.display =
-                "none";
-
+        // Ignore shortcuts if typing inside text input
+        if (document.activeElement === pageInput) {
+            return;
         }
-    );
 
+        // Prevent rapid action on holding down keys
+        if (e.repeat) {
+            e.preventDefault();
+            return;
+        }
+
+        // Shortcut: "H" or "h" to toggle controls bar
+        if (e.key === "h" || e.key === "H") {
+            e.preventDefault();
+            toggleControlsUI();
+            return;
+        }
+
+        // Shortcut: "F" or "f" for Fullscreen
+        if (e.key === "f" || e.key === "F") {
+            e.preventDefault();
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen().catch(() => {});
+            }
+            return;
+        }
+
+        // Zoom shortcuts
+        if (e.key === "+" || e.key === "=") {
+            applyZoom(zoom + 0.05);
+            return;
+        }
+        if (e.key === "-") {
+            applyZoom(zoom - 0.05);
+            return;
+        }
+        if (e.key === "0") {
+            applyZoom(1, false);
+            return;
+        }
+
+        // Arrow Key Page Navigation with Dedouble Cooldown
+        const now = Date.now();
+        if (now - lastPageTurnTime < PAGE_TURN_COOLDOWN) {
+            return;
+        }
+
+        if (e.key === "ArrowLeft" || e.key === "PageUp") {
+            e.preventDefault();
+            lastPageTurnTime = now;
+            pageFlip.flipPrev();
+        } else if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+            e.preventDefault();
+            lastPageTurnTime = now;
+            pageFlip.flipNext();
+        } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            lastPageTurnTime = now;
+            pageFlip.flipNext();
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            lastPageTurnTime = now;
+            pageFlip.flipPrev();
+        }
+
+    });
 
     // --------------------------------------------------
-    // KEYBOARD NAVIGATION
+    // INFO BUTTON & SHORTCUTS MODAL
     // --------------------------------------------------
 
-    document.addEventListener(
-        "keydown",
-        e => {
+    const infoBtn = document.getElementById("info-btn");
+    const shortcutsModal = document.getElementById("shortcuts-modal");
+    const modalCloseBtn = document.getElementById("modal-close-btn");
 
-            /*
-             Don't hijack keyboard shortcuts
-             while typing into the page input.
-            */
+    function openShortcutsModal() {
+        shortcutsModal.classList.add("is-open");
+    }
 
-            if(
-                document.activeElement ===
-                pageInput
-            ){
+    function closeShortcutsModal() {
+        shortcutsModal.classList.remove("is-open");
+    }
 
-                if(
-                    e.key !== "Escape"
-                ){
+    infoBtn.addEventListener("click", openShortcutsModal);
+    modalCloseBtn.addEventListener("click", closeShortcutsModal);
 
-                    return;
-
-                }
-
-            }
-
-
-            if(
-                e.key === "ArrowRight"
-            ){
-
-                pageFlip.flipNext();
-
-            }
-
-
-            if(
-                e.key === "ArrowLeft"
-            ){
-
-                pageFlip.flipPrev();
-
-            }
-
-
-            // + / = zoom in
-
-            if(
-                e.key === "+" ||
-                e.key === "="
-            ){
-
-                applyZoom(
-                    zoom + 0.05
-                );
-
-            }
-
-
-            // - zoom out
-
-            if(
-                e.key === "-"
-            ){
-
-                applyZoom(
-                    zoom - 0.05
-                );
-
-            }
-
-
-            // 0 = reset zoom
-
-            if(
-                e.key === "0"
-            ){
-
-                applyZoom(
-                    1,
-                    false
-                );
-
-            }
-
+    // Close modal when clicking on background overlay
+    shortcutsModal.addEventListener("click", e => {
+        if (e.target === shortcutsModal) {
+            closeShortcutsModal();
         }
-    );
+    });
 
+    // Check display state (Only show Info button on 2-page / landscape / desktop view)
+    function updateInfoBtnVisibility() {
+        // PageFlip orientation: 'landscape' = 2-page spread (Desktop)
+        const is2PageSpread = pageFlip.getOrientation() === "landscape" && window.innerWidth >= 768;
+        if (is2PageSpread) {
+            infoBtn.style.display = "flex";
+        } else {
+            infoBtn.style.display = "none";
+            closeShortcutsModal(); // Auto-close if resized to 1-page/mobile
+        }
+    }
+
+    // Initial check
+    updateInfoBtnVisibility();
+
+    // Re-check on orientation change or window resize
+    pageFlip.on("changeOrientation", updateInfoBtnVisibility);
+    window.addEventListener("resize", updateInfoBtnVisibility);
 
     // --------------------------------------------------
     // ORIENTATION
