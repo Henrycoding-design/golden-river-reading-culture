@@ -9,7 +9,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1200;
+  z-index: 1200 !important;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -30,6 +30,7 @@
   justify-content: space-between;
   max-width: 1400px;
   gap: 2rem;
+  z-index: 1200 !important;
 }
 
 /* Navbar Actions Group (nav links + theme toggle) */
@@ -170,7 +171,7 @@
   padding: 0.5rem;
   flex-direction: column;
   gap: 4px;
-  z-index: 1001;
+  z-index: 2000;
 }
 
 .mobile-menu-toggle span {
@@ -180,6 +181,7 @@
   background-color: var(--text-primary);
   border-radius: 2px;
   transition: var(--transition);
+  z-index: 2000;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -197,16 +199,16 @@
 /* Mobile Drawer Menu */
 .mobile-drawer {
   position: fixed;
-  top: 0;
+  top: 73px;
   right: -100%;
   width: 300px;
   max-width: 80vw;
-  height: 100vh;
+  height: calc(100vh - 73px); /* Full height below the navbar */
   background-color: var(--bg-card);
-  box-shadow: var(--shadow-xl);
+  /* box-shadow: var(--shadow-xl); */
   transition: right 0.3s ease;
   z-index: 1100;
-  padding: 5rem 2rem 2rem;
+  padding: 1.5rem 2rem 2rem;
   overflow-y: auto;
 }
 
@@ -241,15 +243,15 @@
   font-weight: 600;
 }
 
-/* Overlay for mobile drawer */
+/* Full-width overlay restricted to the area below the fixed header */
 .mobile-overlay {
   position: fixed;
-  top: 0;
+  top: 70px; /* Aligns overlay directly below the fixed navbar height */
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: calc(100vh - 70px); /* Covers only the page content below the navbar */
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1090;
+  z-index: 1090; /* Sits below the navbar (1200) and drawer (1250) */
   opacity: 0;
   visibility: hidden;
   transition: var(--transition);
@@ -276,8 +278,10 @@
 
   .mobile-menu-toggle {
     display: flex;
-    position: relative;
-    z-index: 1110;
+    position: fixed;
+    right: 1rem;
+    top: 0.85rem;
+    z-index: 2000 !important;
   }
 
   .navbar-brand {
